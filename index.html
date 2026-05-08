@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Porra Mundial 2026 · Iberpay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ PALETA IBERPAY ═══
+   Azul principal:  #003E7E  (ajustar con el hex real)
+   Azul medio:      #0062B8
+   Azul claro:      #E8F1FB
+   Acento verde:    #00A86B  (segundo color Iberpay)
+   Fondo:           #F4F7FB
+   Tarjeta:         #FFFFFF
+*/
+:root{
+  --ib-azul:      #003E7E;
+  --ib-azul-mid:  #0062B8;
+  --ib-azul-light:#E8F1FB;
+  --ib-verde:     #00A86B;
+  --ib-verde-dark:#007A4D;
+  --ib-rojo:      #D93025;
+  --ib-amber:     #F59E0B;
+  --fondo:        #F0F4FA;
+  --tarjeta:      #FFFFFF;
+  --borde:        #D6E2F0;
+  --texto:        #0D1B2E;
+  --texto2:       #5A7A9A;
+  --texto3:       #8AA5C0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--fondo);color:var(--texto);min-height:100vh;overflow-x:hidden;font-size:15px;}
+
+/* ─── LOGIN ─── */
+#pantalla-login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;background:linear-gradient(160deg,#001F4D 0%,#003E7E 55%,#005CA8 100%);}
+.login-logo-wrap{text-align:center;margin-bottom:2rem;}
+.login-iberpay{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.3em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:0.5rem;}
+.login-titulo{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,11vw,4.5rem);line-height:1;letter-spacing:2px;color:#fff;}
+.login-sub{display:inline-block;background:var(--ib-verde);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:4px 12px;border-radius:99px;margin-top:0.5rem;}
+.login-card{background:#fff;border-radius:16px;padding:2rem;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.25);}
+.login-card label{display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--texto2);margin-bottom:0.4rem;}
+.login-card input{width:100%;padding:0.8rem 1rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:10px;color:var(--texto);font-family:'Inter',sans-serif;font-size:0.95rem;margin-bottom:1rem;outline:none;transition:border-color 0.2s;}
+.login-card input:focus{border-color:var(--ib-azul-mid);}
+.btn-primary{width:100%;padding:0.85rem;background:var(--ib-azul);color:#fff;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;transition:background 0.2s,transform 0.1s;}
+.btn-primary:hover{background:var(--ib-azul-mid);}
+.btn-primary:active{transform:scale(0.98);}
+.login-hint{margin-top:0.875rem;font-size:0.77rem;color:var(--texto3);text-align:center;}
+
+/* ─── HEADER ─── */
+#pantalla-app{display:none;}
+.header{background:var(--ib-azul);padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:52px;}
+.header-logo{display:flex;align-items:center;gap:0.5rem;}
+.header-marca{font-family:'Inter',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;color:rgba(255,255,255,0.6);text-transform:uppercase;}
+.header-titulo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#fff;letter-spacing:1px;}
+.header-user{display:flex;align-items:center;gap:0.5rem;}
+.header-nombre-txt{font-size:0.8rem;color:rgba(255,255,255,0.7);}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--ib-verde);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.72rem;color:#fff;flex-shrink:0;}
+
+/* ─── NAV ─── */
+.nav-tabs{display:flex;background:#fff;border-bottom:2px solid var(--borde);overflow-x:auto;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.nav-tab{padding:0.7rem 0.875rem;font-size:0.76rem;font-weight:600;letter-spacing:0.03em;color:var(--texto2);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color 0.2s,border-color 0.2s;flex-shrink:0;margin-bottom:-2px;}
+.nav-tab.active{color:var(--ib-azul);border-bottom-color:var(--ib-azul);}
+.content{padding:1.25rem;max-width:640px;margin:0 auto;}
+
+/* ─── TIPOGRAFÍA ─── */
+.seccion-titulo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:1px;color:var(--ib-azul);margin-bottom:1rem;}
+.pill{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.05em;padding:2px 8px;border-radius:99px;}
+.pill-azul{background:var(--ib-azul-light);color:var(--ib-azul);}
+.pill-verde{background:#D6F5EA;color:var(--ib-verde-dark);}
+.pill-amber{background:#FEF3C7;color:#92400E;}
+.pill-rojo{background:#FEE2E2;color:#B91C1C;}
+
+/* ─── CLASIFICACIÓN ─── */
+.podio{display:flex;gap:0.5rem;margin-bottom:1.25rem;align-items:flex-end;}
+.podio-item{flex:1;background:#fff;border:1.5px solid var(--borde);border-radius:12px;padding:0.875rem 0.5rem;text-align:center;}
+.podio-item.p1{border-color:#F59E0B;background:linear-gradient(160deg,#FFFBEB,#FFF);}
+.podio-item.p2{order:1;}
+.podio-item.p3{order:3;}
+.podio-item.p1{order:2;padding-top:1.25rem;}
+.podio-medalla{font-size:1.5rem;display:block;margin-bottom:0.25rem;}
+.podio-nombre{font-size:0.8rem;font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--texto);}
+.podio-pts{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--ib-azul);}
+.ranking-lista{display:flex;flex-direction:column;gap:0.4rem;}
+.ranking-fila{background:#fff;border:1.5px solid var(--borde);border-radius:10px;padding:0.7rem 1rem;display:flex;align-items:center;gap:0.75rem;}
+.ranking-fila.yo{border-color:var(--ib-azul-mid);background:var(--ib-azul-light);}
+.ranking-pos{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--texto3);width:22px;text-align:center;flex-shrink:0;}
+.ranking-nombre{flex:1;font-size:0.875rem;font-weight:600;color:var(--texto);}
+.ranking-detalle{font-size:0.7rem;color:var(--texto2);}
+.ranking-pts{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--ib-azul);}
+.badge-yo{font-size:0.62rem;font-weight:700;background:var(--ib-azul);color:#fff;border-radius:4px;padding:1px 5px;margin-left:4px;}
+
+/* ─── PARTIDOS / PRONÓSTICOS ─── */
+.jornada-label{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--texto2);margin:1.25rem 0 0.6rem;display:flex;align-items:center;gap:0.5rem;}
+.jornada-label::after{content:'';flex:1;height:1px;background:var(--borde);}
+.jornada-label:first-child{margin-top:0;}
+.partido-card{background:#fff;border:1.5px solid var(--borde);border-radius:12px;padding:1rem;margin-bottom:0.625rem;transition:box-shadow 0.2s;}
+.partido-card.bloqueado{opacity:0.65;}
+.partido-hora{font-size:0.7rem;color:var(--texto2);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem;font-weight:500;}
+.dot-live{width:6px;height:6px;border-radius:50%;background:var(--ib-rojo);animation:pulse 1.2s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.equipos-row{display:flex;align-items:center;gap:0.5rem;}
+.equipo-nombre{flex:1;font-weight:700;font-size:0.9rem;color:var(--texto);}
+.equipo-nombre.derecha{text-align:right;}
+.vs-badge{background:var(--fondo);border:1.5px solid var(--borde);border-radius:8px;padding:0.2rem 0.6rem;font-size:0.8rem;color:var(--texto2);flex-shrink:0;font-weight:700;}
+.marcador-inputs{display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;}
+.marcador-input{flex:1;padding:0.6rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:8px;color:var(--texto);font-size:1.1rem;font-weight:700;text-align:center;font-family:'Bebas Neue',sans-serif;outline:none;transition:border-color 0.2s;-moz-appearance:textfield;}
+.marcador-input::-webkit-outer-spin-button,.marcador-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.marcador-input:focus{border-color:var(--ib-azul-mid);}
+.marcador-input:disabled{opacity:0.45;cursor:not-allowed;}
+.marcador-sep{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--texto2);flex-shrink:0;}
+
+/* Goleador por partido */
+.goleador-partido-row{margin-top:0.625rem;background:var(--ib-azul-light);border:1.5px solid #C8DCEE;border-radius:8px;padding:0.5rem 0.75rem;}
+.goleador-partido-label{font-size:0.68rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ib-azul-mid);margin-bottom:0.375rem;}
+.btn-elegir-goleador{display:flex;align-items:center;gap:0.5rem;padding:0.45rem 0.875rem;background:#fff;border:1.5px solid var(--ib-azul-mid);border-radius:8px;color:var(--ib-azul);font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.15s;}
+.btn-elegir-goleador:hover{background:var(--ib-azul);color:#fff;}
+.btn-elegir-goleador.bloq{opacity:0.5;cursor:not-allowed;pointer-events:none;border-color:var(--borde);color:var(--texto2);}
+.goleador-guardado-txt{font-size:0.75rem;color:var(--ib-verde-dark);margin-top:0.375rem;font-weight:600;display:flex;align-items:center;gap:0.375rem;}
+/* Bottom sheet modal */
+.bs-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;align-items:flex-end;justify-content:center;}
+.bs-overlay.open{display:flex;}
+.bs-sheet{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:640px;max-height:85vh;overflow-y:auto;padding:0 0 2rem;}
+.bs-handle{width:40px;height:4px;background:var(--borde);border-radius:99px;margin:0.75rem auto 0;}
+.bs-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem 0.75rem;border-bottom:1.5px solid var(--borde);position:sticky;top:0;background:#fff;z-index:1;}
+.bs-titulo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.5px;color:var(--ib-azul);}
+.bs-cerrar{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--texto2);padding:0.25rem;line-height:1;}
+.bs-body{padding:0.75rem 1.25rem;}
+.bs-zona-titulo{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--texto2);margin:1rem 0 0.5rem;display:flex;align-items:center;gap:0.5rem;}
+.bs-zona-titulo::after{content:'';flex:1;height:1px;background:var(--borde);}
+.bs-jugador{display:flex;align-items:center;gap:0.75rem;padding:0.625rem 0.875rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:10px;margin-bottom:0.3rem;cursor:pointer;transition:all 0.15s;}
+.bs-jugador:hover{border-color:var(--ib-azul-mid);background:var(--ib-azul-light);}
+.bs-jugador.sel{background:var(--ib-azul);border-color:var(--ib-azul);}
+.bs-jugador.sel .bs-j-nombre,.bs-jugador.sel .bs-j-club,.bs-jugador.sel .bs-j-dorsal{color:#fff;}
+.bs-j-dorsal{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--texto3);width:22px;text-align:center;flex-shrink:0;}
+.bs-j-nombre{font-size:0.875rem;font-weight:600;color:var(--texto);flex:1;}
+.bs-j-club{font-size:0.7rem;color:var(--texto2);}
+.jugador-chip{display:none;}/* legacy — oculto */
+
+.btn-guardar{width:100%;margin-top:0.625rem;padding:0.6rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:8px;color:var(--texto2);font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.btn-guardar:hover:not(:disabled){border-color:var(--ib-azul-mid);color:var(--ib-azul);}
+.btn-guardar:disabled{opacity:0.4;cursor:not-allowed;}
+.pronostico-guardado{font-size:0.72rem;color:var(--ib-verde-dark);text-align:center;margin-top:0.4rem;opacity:0;transition:opacity 0.3s;font-weight:600;}
+.pronostico-guardado.visible{opacity:1;}
+.resultado-real{margin-top:0.625rem;padding:0.5rem 0.75rem;background:var(--fondo);border-radius:8px;font-size:0.82rem;font-weight:600;display:flex;align-items:center;justify-content:space-between;}
+.resultado-acierto{color:var(--ib-verde-dark);}
+.resultado-parcial{color:#92400E;}
+.resultado-fallo{color:var(--texto2);}
+
+/* ─── CAMPEÓN ─── */
+.campeon-card{background:linear-gradient(135deg,#FFFBEB,#EBF4FF);border:1.5px solid #F59E0B;border-radius:16px;padding:1.5rem;text-align:center;margin-bottom:1.25rem;}
+.campeon-trofeo{font-size:2.5rem;display:block;margin-bottom:0.5rem;}
+.campeon-titulo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1px;margin-bottom:0.5rem;color:var(--ib-azul);}
+.paises-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;}
+.pais-btn{padding:0.6rem 0.5rem;background:#fff;border:1.5px solid var(--borde);border-radius:8px;color:var(--texto);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;text-align:center;line-height:1.3;}
+.pais-btn:hover{border-color:var(--ib-azul-mid);}
+.pais-btn.seleccionado{background:var(--ib-azul-light);border-color:var(--ib-azul);color:var(--ib-azul);}
+.pais-btn:disabled{opacity:0.5;cursor:not-allowed;}
+
+/* ─── RESUMEN ─── */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.25rem;}
+.stat-card{background:#fff;border:1.5px solid var(--borde);border-radius:12px;padding:1rem;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--ib-azul);line-height:1;}
+.stat-label{font-size:0.68rem;font-weight:600;color:var(--texto2);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.25rem;}
+.resumen-partido{background:#fff;border:1.5px solid var(--borde);border-radius:10px;padding:0.7rem 0.875rem;margin-bottom:0.4rem;display:flex;align-items:flex-start;gap:0.6rem;}
+.resumen-partido-info{flex:1;}
+.resumen-equipos{font-size:0.82rem;font-weight:600;color:var(--texto);}
+.resumen-sub{font-size:0.68rem;color:var(--texto2);margin-top:2px;}
+.resumen-pron{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--texto2);flex-shrink:0;}
+.resumen-estado{font-size:0.68rem;flex-shrink:0;padding:2px 7px;border-radius:99px;font-weight:700;align-self:center;}
+.est-exacto{background:#D6F5EA;color:var(--ib-verde-dark);}
+.est-parcial{background:#FEF3C7;color:#92400E;}
+.est-fallo{background:#FEE2E2;color:#B91C1C;}
+.est-pendiente{background:var(--fondo);color:var(--texto2);}
+.goleador-box{background:#fff;border:1.5px solid #F59E0B;border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;}
+.goleador-box-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--ib-azul);margin-bottom:0.75rem;}
+.goleador-input-row{display:flex;gap:0.5rem;}
+.goleador-input-row input{flex:1;padding:0.7rem 0.875rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:8px;color:var(--texto);font-family:'Inter',sans-serif;font-size:0.9rem;outline:none;}
+.goleador-input-row input:focus{border-color:var(--ib-amber);}
+.btn-goleador{padding:0.7rem 1.25rem;background:var(--ib-azul);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.82rem;cursor:pointer;white-space:nowrap;}
+.btn-goleador:hover{background:var(--ib-azul-mid);}
+
+/* ─── SELECCIONES ─── */
+.selecciones-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;margin-bottom:1rem;}
+.seleccion-btn{background:#fff;border:1.5px solid var(--borde);border-radius:12px;padding:0.75rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.75rem;}
+.seleccion-btn:hover{border-color:var(--ib-azul-mid);box-shadow:0 2px 8px rgba(0,62,126,0.1);}
+.bandera-img{width:36px;height:24px;border-radius:4px;object-fit:cover;flex-shrink:0;border:1px solid var(--borde);}
+.seleccion-nombre{font-weight:700;font-size:0.85rem;color:var(--texto);}
+.seleccion-grupo{font-size:0.68rem;color:var(--texto2);margin-top:1px;}
+.btn-volver{display:flex;align-items:center;gap:0.5rem;background:none;border:none;color:var(--ib-azul-mid);font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;margin-bottom:1rem;padding:0;}
+.seleccion-header{display:flex;align-items:center;gap:1rem;background:var(--ib-azul);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;}
+.seleccion-flag-big{width:56px;height:38px;border-radius:6px;object-fit:cover;border:2px solid rgba(255,255,255,0.3);}
+.seleccion-info-nombre{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:1px;color:#fff;}
+.seleccion-info-grupo{font-size:0.78rem;color:rgba(255,255,255,0.65);margin-top:2px;}
+.zona-titulo{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--texto2);margin:1.25rem 0 0.6rem;display:flex;align-items:center;gap:0.5rem;}
+.zona-titulo::after{content:'';flex:1;height:1px;background:var(--borde);}
+.jugador-fila{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.875rem;background:#fff;border:1.5px solid var(--borde);border-radius:10px;margin-bottom:0.3rem;}
+.jugador-dorsal{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--texto3);width:22px;text-align:center;flex-shrink:0;}
+.jugador-nombre{flex:1;font-size:0.85rem;font-weight:600;color:var(--texto);}
+.jugador-club{font-size:0.7rem;color:var(--texto2);}
+.jugador-edad{font-size:0.7rem;color:var(--texto2);flex-shrink:0;}
+
+/* ─── INSTRUCCIONES ─── */
+.regla-card{background:#fff;border:1.5px solid var(--borde);border-radius:12px;padding:1.25rem;margin-bottom:0.75rem;}
+.regla-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;}
+.regla-icon{font-size:1.6rem;flex-shrink:0;}
+.regla-titulo{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:0.5px;color:var(--ib-azul);}
+.regla-desc{font-size:0.845rem;color:var(--texto2);line-height:1.65;}
+.puntos-tabla{width:100%;border-collapse:collapse;margin-top:0.75rem;}
+.puntos-tabla th{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--texto2);padding:0.5rem 0.75rem;text-align:left;border-bottom:1.5px solid var(--borde);}
+.puntos-tabla td{padding:0.6rem 0.75rem;font-size:0.835rem;border-bottom:1px solid var(--borde);color:var(--texto);}
+.puntos-tabla tr:last-child td{border-bottom:none;}
+.pts-badge{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;padding:2px 8px;border-radius:6px;display:inline-block;}
+.pts-3{background:#D6F5EA;color:var(--ib-verde-dark);}
+.pts-1{background:#FEF3C7;color:#92400E;}
+.pts-5{background:var(--ib-azul-light);color:var(--ib-azul);}
+.pts-10{background:#FEE2E2;color:#B91C1C;}
+.pts-0{background:var(--fondo);color:var(--texto2);}
+
+/* ─── ADMIN ─── */
+.admin-aviso{background:#FEF3C7;border:1.5px solid #F59E0B;border-radius:10px;padding:0.875rem 1rem;font-size:0.82rem;color:#92400E;margin-bottom:1.25rem;font-weight:500;}
+.admin-card{background:#fff;border:1.5px solid var(--borde);border-radius:12px;padding:1rem;margin-bottom:0.5rem;}
+.admin-equipos{font-weight:700;font-size:0.9rem;margin-bottom:0.625rem;color:var(--texto);}
+.resultado-admin-row{display:flex;align-items:center;gap:0.5rem;}
+.resultado-admin-row input{width:55px;padding:0.45rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:8px;color:var(--texto);text-align:center;font-size:1rem;font-weight:700;font-family:'Bebas Neue',sans-serif;outline:none;-moz-appearance:textfield;}
+.resultado-admin-row input::-webkit-outer-spin-button,.resultado-admin-row input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.resultado-admin-row input:focus{border-color:var(--ib-azul-mid);}
+.btn-admin{flex:1;padding:0.45rem;background:var(--ib-azul);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.8rem;cursor:pointer;}
+.btn-admin:hover{background:var(--ib-azul-mid);}
+
+/* ─── TOAST ─── */
+#toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ib-azul);color:#fff;padding:0.6rem 1.25rem;border-radius:99px;font-size:0.82rem;font-weight:600;transition:transform 0.3s;z-index:999;white-space:nowrap;box-shadow:0 4px 16px rgba(0,62,126,0.3);}
+#toast.show{transform:translateX(-50%) translateY(0);}
+.skeleton{background:linear-gradient(90deg,#e8eef6 25%,#d8e4f0 50%,#e8eef6 75%);background-size:200% 100%;animation:shimmer 1.2s infinite;border-radius:8px;height:52px;margin-bottom:0.4rem;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--texto2);}
+.empty-icon{font-size:2.5rem;display:block;margin-bottom:0.75rem;}
+</style>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div id="pantalla-login">
+  <div class="login-logo-wrap">
+    <div class="login-iberpay">Iberpay</div>
+    <div class="login-titulo">⚽ PORRA<br>MUNDIAL 26</div>
+    <span class="login-sub">USA · CANADA · MEXICO</span>
+  </div>
+  <div class="login-card">
+    <label for="input-nombre">Tu nombre</label>
+    <input type="text" id="input-nombre" placeholder="Ej: Carlos García" maxlength="30" autocomplete="off">
+    <label for="input-codigo">Código de sala</label>
+    <input type="text" id="input-codigo" placeholder="Código del administrador" maxlength="20" autocomplete="off">
+    <button class="btn-primary" onclick="entrar()">Entrar a la porra</button>
+    <div id="login-error" style="display:none;margin-top:0.875rem;padding:0.625rem 0.875rem;background:#FEE2E2;border:1.5px solid #FECACA;border-radius:8px;font-size:0.78rem;color:#B91C1C;font-weight:500;line-height:1.4;"></div>
+    <div class="login-hint">Introduce tu nombre y el código que has recibido</div>
+  </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div id="pantalla-app">
+  <div class="header">
+    <div class="header-logo">
+      <div>
+        <div class="header-marca">Iberpay</div>
+        <div class="header-titulo">⚽ Porra Mundial 26</div>
+      </div>
+    </div>
+    <div class="header-user">
+      <span class="header-nombre-txt" id="header-nombre">—</span>
+      <div class="avatar" id="avatar-letra">?</div>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="mostrarTab('clasificacion',this)">🏆 Ranking</div>
+    <div class="nav-tab" onclick="mostrarTab('pronosticos',this)">⚽ Partidos</div>
+    <div class="nav-tab" onclick="mostrarTab('campeon',this)">🌟 Campeón</div>
+    <div class="nav-tab" onclick="mostrarTab('resumen',this)">📋 Mi resumen</div>
+    <div class="nav-tab" onclick="mostrarTab('selecciones',this)">🌍 Selecciones</div>
+    <div class="nav-tab" onclick="mostrarTab('instrucciones',this)">📖 Reglas</div>
+    <div class="nav-tab" id="tab-btn-admin" style="display:none" onclick="mostrarTab('admin',this)">🔧 Admin</div>
+  </div>
+
+  <div class="content" id="tab-clasificacion">
+    <div class="seccion-titulo">Clasificación</div>
+    <div id="podio"></div>
+    <div class="ranking-lista" id="ranking-lista"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+  </div>
+  <div class="content" id="tab-pronosticos" style="display:none">
+    <div class="seccion-titulo">Partidos</div>
+    <div id="lista-partidos"></div>
+  </div>
+  <div class="content" id="tab-campeon" style="display:none">
+    <div class="campeon-card">
+      <span class="campeon-trofeo">🏆</span>
+      <div class="campeon-titulo">¿Quién ganará el Mundial?</div>
+      <div style="font-size:0.82rem;color:var(--texto2)">Acierto: <strong>+10 puntos</strong></div>
+      <div id="campeon-seleccionado" style="margin-top:0.75rem;font-size:0.875rem;color:var(--ib-azul);font-weight:600;"></div>
+    </div>
+    <div class="paises-grid" id="paises-grid"></div>
+  </div>
+  <div class="content" id="tab-resumen" style="display:none">
+    <div class="seccion-titulo">Mi resumen</div>
+    <div id="resumen-contenido"></div>
+  </div>
+  <div class="content" id="tab-selecciones" style="display:none">
+    <div id="selecciones-contenido"></div>
+  </div>
+  <div class="content" id="tab-instrucciones" style="display:none">
+    <div class="seccion-titulo">Cómo jugar</div>
+    <div id="instrucciones-contenido"></div>
+  </div>
+  <div class="content" id="tab-admin" style="display:none">
+    <div class="admin-aviso">⚠️ Panel de administración — Solo para el gestor</div>
+    <div class="seccion-titulo">Resultados</div>
+    <div id="admin-partidos"></div>
+  </div>
+</div>
+<!-- BOTTOM SHEET GOLEADOR -->
+<div class="bs-overlay" id="bs-overlay" onclick="cerrarBS(event)">
+  <div class="bs-sheet" id="bs-sheet">
+    <div class="bs-handle"></div>
+    <div class="bs-header">
+      <div class="bs-titulo" id="bs-titulo">Elige el goleador</div>
+      <button class="bs-cerrar" onclick="cerrarBSBtn()">✕</button>
+    </div>
+    <div class="bs-body" id="bs-body"></div>
+  </div>
+</div>
+
+<div id="toast">✓ Guardado</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script>
+// ═══ FIREBASE CONFIG ═══
+const firebaseConfig = {
+  apiKey: "AIzaSyCkcvOz8Owb4mgO8-nQQDm2xVEilKjfKsk",
+  authDomain: "porra-mundial-iberpay-2026.firebaseapp.com",
+  databaseURL: "https://porra-mundial-iberpay-2026-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "porra-mundial-iberpay-2026",
+  storageBucket: "porra-mundial-iberpay-2026.firebasestorage.app",
+  messagingSenderId: "695403574892",
+  appId: "1:695403574892:web:f15b0683ae710f9d584a49"
+};
+
+firebase.initializeApp(firebaseConfig);
+const fbDB = firebase.database();
+
+// ═══ CONFIG ═══
+const CODIGO_SALA = "mundial26";
+const CODIGO_ADMIN = "admin2026";
+
+// ═══ DB: Firebase Realtime Database ═══
+const _cache = {};
+
+const DB = {
+  get:(k) => _cache[k] ?? null,
+  set:(k,v) => {
+    _cache[k] = v;
+    fbDB.ref('porra/' + k).set(v).catch(e => console.error('FB write error', e));
+  }
+};
+
+function initFirebaseListeners() {
+  fbDB.ref('porra').on('value', snapshot => {
+    const data = snapshot.val() || {};
+    Object.keys(data).forEach(k => { _cache[k] = data[k]; });
+    if (usuarioActual) renderAll();
+  }, e => console.error('FB listen error', e));
+}
+
+async function loadInitialData() {
+  const snapshot = await fbDB.ref('porra').get();
+  const data = snapshot.val() || {};
+  Object.keys(data).forEach(k => { _cache[k] = data[k]; });
+}
+
+// ═══ CALENDARIO COMPLETO MUNDIAL 2026 ═══
+// Fase de grupos (72 partidos). Horarios en hora española (CEST = UTC+2)
+// Los horarios son aproximados adaptados a España (México UTC-6 +8h = CEST)
+const PARTIDOS_INICIALES = [
+  // GRUPO A (México, Sudáfrica, Corea del Sur, Chequia)
+  {id:'g1',local:'México',visitante:'Sudáfrica',grupo:'Grupo A',fecha:'2026-06-11',hora:'21:00',resultado:null},
+  {id:'g2',local:'Corea del Sur',visitante:'Chequia',grupo:'Grupo A',fecha:'2026-06-12',hora:'04:00',resultado:null},
+  {id:'g3',local:'Chequia',visitante:'Sudáfrica',grupo:'Grupo A',fecha:'2026-06-18',hora:'20:00',resultado:null},
+  {id:'g4',local:'México',visitante:'Corea del Sur',grupo:'Grupo A',fecha:'2026-06-19',hora:'03:00',resultado:null},
+  {id:'g5',local:'Chequia',visitante:'México',grupo:'Grupo A',fecha:'2026-06-25',hora:'03:00',resultado:null},
+  {id:'g6',local:'Sudáfrica',visitante:'Corea del Sur',grupo:'Grupo A',fecha:'2026-06-25',hora:'03:00',resultado:null},
+  // GRUPO B (Canadá, Bosnia, Qatar, Suiza)
+  {id:'g7',local:'Canadá',visitante:'Bosnia y Herz.',grupo:'Grupo B',fecha:'2026-06-12',hora:'21:00',resultado:null},
+  {id:'g8',local:'Qatar',visitante:'Suiza',grupo:'Grupo B',fecha:'2026-06-13',hora:'00:00',resultado:null},
+  {id:'g9',local:'Suiza',visitante:'Bosnia y Herz.',grupo:'Grupo B',fecha:'2026-06-18',hora:'23:00',resultado:null},
+  {id:'g10',local:'Canadá',visitante:'Qatar',grupo:'Grupo B',fecha:'2026-06-19',hora:'00:00',resultado:null},
+  {id:'g11',local:'Bosnia y Herz.',visitante:'Qatar',grupo:'Grupo B',fecha:'2026-06-25',hora:'21:00',resultado:null},
+  {id:'g12',local:'Suiza',visitante:'Canadá',grupo:'Grupo B',fecha:'2026-06-25',hora:'21:00',resultado:null},
+  // GRUPO C (Brasil, Croacia, Marruecos, Senegal)  
+  {id:'g13',local:'Brasil',visitante:'Croacia',grupo:'Grupo C',fecha:'2026-06-13',hora:'03:00',resultado:null},
+  {id:'g14',local:'Marruecos',visitante:'Senegal',grupo:'Grupo C',fecha:'2026-06-13',hora:'21:00',resultado:null},
+  {id:'g15',local:'Croacia',visitante:'Marruecos',grupo:'Grupo C',fecha:'2026-06-19',hora:'21:00',resultado:null},
+  {id:'g16',local:'Brasil',visitante:'Senegal',grupo:'Grupo C',fecha:'2026-06-20',hora:'00:00',resultado:null},
+  {id:'g17',local:'Croacia',visitante:'Senegal',grupo:'Grupo C',fecha:'2026-06-26',hora:'00:00',resultado:null},
+  {id:'g18',local:'Marruecos',visitante:'Brasil',grupo:'Grupo C',fecha:'2026-06-26',hora:'00:00',resultado:null},
+  // GRUPO D (Estados Unidos, Panamá, Irán, Ecuador)
+  {id:'g19',local:'Estados Unidos',visitante:'Panamá',grupo:'Grupo D',fecha:'2026-06-14',hora:'00:00',resultado:null},
+  {id:'g20',local:'Irán',visitante:'Ecuador',grupo:'Grupo D',fecha:'2026-06-14',hora:'03:00',resultado:null},
+  {id:'g21',local:'Ecuador',visitante:'Panamá',grupo:'Grupo D',fecha:'2026-06-20',hora:'20:00',resultado:null},
+  {id:'g22',local:'Estados Unidos',visitante:'Irán',grupo:'Grupo D',fecha:'2026-06-21',hora:'03:00',resultado:null},
+  {id:'g23',local:'Ecuador',visitante:'Estados Unidos',grupo:'Grupo D',fecha:'2026-06-26',hora:'21:00',resultado:null},
+  {id:'g24',local:'Panamá',visitante:'Irán',grupo:'Grupo D',fecha:'2026-06-26',hora:'21:00',resultado:null},
+  // GRUPO E (Alemania, Arabia Saudita, Australia, Escocia) - nota: Escocia era Arabia Saudita, ajustar per sorteo
+  // Cabeza de serie Alemania, ajustar rivales con datos reales
+  {id:'g25',local:'Alemania',visitante:'Arabia Saudita',grupo:'Grupo E',fecha:'2026-06-14',hora:'21:00',resultado:null},
+  {id:'g26',local:'Australia',visitante:'Escocia',grupo:'Grupo E',fecha:'2026-06-15',hora:'00:00',resultado:null},
+  {id:'g27',local:'Arabia Saudita',visitante:'Australia',grupo:'Grupo E',fecha:'2026-06-21',hora:'00:00',resultado:null},
+  {id:'g28',local:'Alemania',visitante:'Escocia',grupo:'Grupo E',fecha:'2026-06-21',hora:'21:00',resultado:null},
+  {id:'g29',local:'Arabia Saudita',visitante:'Escocia',grupo:'Grupo E',fecha:'2026-06-27',hora:'00:00',resultado:null},
+  {id:'g30',local:'Australia',visitante:'Alemania',grupo:'Grupo E',fecha:'2026-06-27',hora:'00:00',resultado:null},
+  // GRUPO F (Países Bajos, Japón, Suecia, Túnez)
+  {id:'g31',local:'Países Bajos',visitante:'Japón',grupo:'Grupo F',fecha:'2026-06-15',hora:'21:00',resultado:null},
+  {id:'g32',local:'Suecia',visitante:'Túnez',grupo:'Grupo F',fecha:'2026-06-16',hora:'00:00',resultado:null},
+  {id:'g33',local:'Japón',visitante:'Suecia',grupo:'Grupo F',fecha:'2026-06-21',hora:'20:00',resultado:null},
+  {id:'g34',local:'Países Bajos',visitante:'Túnez',grupo:'Grupo F',fecha:'2026-06-22',hora:'03:00',resultado:null},
+  {id:'g35',local:'Japón',visitante:'Túnez',grupo:'Grupo F',fecha:'2026-06-27',hora:'21:00',resultado:null},
+  {id:'g36',local:'Suecia',visitante:'Países Bajos',grupo:'Grupo F',fecha:'2026-06-27',hora:'21:00',resultado:null},
+  // GRUPO G (Bélgica, Marruecos→Costa de Marfil, Paraguay, Turquía) – Bélgica cabeza
+  {id:'g37',local:'Bélgica',visitante:'Costa de Marfil',grupo:'Grupo G',fecha:'2026-06-16',hora:'21:00',resultado:null},
+  {id:'g38',local:'Paraguay',visitante:'Turquía',grupo:'Grupo G',fecha:'2026-06-17',hora:'00:00',resultado:null},
+  {id:'g39',local:'Costa de Marfil',visitante:'Paraguay',grupo:'Grupo G',fecha:'2026-06-22',hora:'20:00',resultado:null},
+  {id:'g40',local:'Bélgica',visitante:'Turquía',grupo:'Grupo G',fecha:'2026-06-23',hora:'00:00',resultado:null},
+  {id:'g41',local:'Costa de Marfil',visitante:'Turquía',grupo:'Grupo G',fecha:'2026-06-28',hora:'00:00',resultado:null},
+  {id:'g42',local:'Paraguay',visitante:'Bélgica',grupo:'Grupo G',fecha:'2026-06-28',hora:'00:00',resultado:null},
+  // GRUPO H (España, Uruguay, Cabo Verde, Arabia Saudita→Uzbekistán)
+  {id:'g43',local:'España',visitante:'Uruguay',grupo:'Grupo H',fecha:'2026-06-17',hora:'21:00',resultado:null},
+  {id:'g44',local:'Cabo Verde',visitante:'Uzbekistán',grupo:'Grupo H',fecha:'2026-06-18',hora:'00:00',resultado:null},
+  {id:'g45',local:'Uruguay',visitante:'Cabo Verde',grupo:'Grupo H',fecha:'2026-06-23',hora:'21:00',resultado:null},
+  {id:'g46',local:'España',visitante:'Uzbekistán',grupo:'Grupo H',fecha:'2026-06-24',hora:'00:00',resultado:null},
+  {id:'g47',local:'Uruguay',visitante:'Uzbekistán',grupo:'Grupo H',fecha:'2026-06-28',hora:'21:00',resultado:null},
+  {id:'g48',local:'Cabo Verde',visitante:'España',grupo:'Grupo H',fecha:'2026-06-28',hora:'21:00',resultado:null},
+  // GRUPO I (Francia, Noruega, Senegal→Iraq, ?) 
+  {id:'g49',local:'Francia',visitante:'Noruega',grupo:'Grupo I',fecha:'2026-06-18',hora:'21:00',resultado:null},
+  {id:'g50',local:'Iraq',visitante:'Colombia',grupo:'Grupo I',fecha:'2026-06-19',hora:'00:00',resultado:null},
+  {id:'g51',local:'Noruega',visitante:'Iraq',grupo:'Grupo I',fecha:'2026-06-24',hora:'21:00',resultado:null},
+  {id:'g52',local:'Francia',visitante:'Colombia',grupo:'Grupo I',fecha:'2026-06-25',hora:'00:00',resultado:null},
+  {id:'g53',local:'Noruega',visitante:'Colombia',grupo:'Grupo I',fecha:'2026-06-29',hora:'00:00',resultado:null},
+  {id:'g54',local:'Iraq',visitante:'Francia',grupo:'Grupo I',fecha:'2026-06-29',hora:'00:00',resultado:null},
+  // GRUPO J (Argentina, Argelia, Austria, Jordania)
+  {id:'g55',local:'Argentina',visitante:'Argelia',grupo:'Grupo J',fecha:'2026-06-19',hora:'21:00',resultado:null},
+  {id:'g56',local:'Austria',visitante:'Jordania',grupo:'Grupo J',fecha:'2026-06-20',hora:'00:00',resultado:null},
+  {id:'g57',local:'Argelia',visitante:'Austria',grupo:'Grupo J',fecha:'2026-06-25',hora:'20:00',resultado:null},
+  {id:'g58',local:'Argentina',visitante:'Jordania',grupo:'Grupo J',fecha:'2026-06-26',hora:'03:00',resultado:null},
+  {id:'g59',local:'Argelia',visitante:'Jordania',grupo:'Grupo J',fecha:'2026-06-29',hora:'21:00',resultado:null},
+  {id:'g60',local:'Austria',visitante:'Argentina',grupo:'Grupo J',fecha:'2026-06-29',hora:'21:00',resultado:null},
+  // GRUPO K (Portugal, Marruecos→Colombia, RD Congo, Uzbekistán→Uzbek)
+  {id:'g61',local:'Portugal',visitante:'Marruecos',grupo:'Grupo K',fecha:'2026-06-20',hora:'21:00',resultado:null},
+  {id:'g62',local:'República D. Congo',visitante:'Uzbekistán',grupo:'Grupo K',fecha:'2026-06-21',hora:'00:00',resultado:null},
+  {id:'g63',local:'Marruecos',visitante:'República D. Congo',grupo:'Grupo K',fecha:'2026-06-26',hora:'20:00',resultado:null},
+  {id:'g64',local:'Portugal',visitante:'Uzbekistán',grupo:'Grupo K',fecha:'2026-06-27',hora:'03:00',resultado:null},
+  {id:'g65',local:'Marruecos',visitante:'Uzbekistán',grupo:'Grupo K',fecha:'2026-06-30',hora:'00:00',resultado:null},
+  {id:'g66',local:'República D. Congo',visitante:'Portugal',grupo:'Grupo K',fecha:'2026-06-30',hora:'00:00',resultado:null},
+  // GRUPO L (Inglaterra, Senegal→Egipto, Eslovaquia, ?)
+  {id:'g67',local:'Inglaterra',visitante:'Senegal',grupo:'Grupo L',fecha:'2026-06-21',hora:'21:00',resultado:null},
+  {id:'g68',local:'Eslovaquia',visitante:'Egipto',grupo:'Grupo L',fecha:'2026-06-22',hora:'00:00',resultado:null},
+  {id:'g69',local:'Senegal',visitante:'Eslovaquia',grupo:'Grupo L',fecha:'2026-06-27',hora:'20:00',resultado:null},
+  {id:'g70',local:'Inglaterra',visitante:'Egipto',grupo:'Grupo L',fecha:'2026-06-28',hora:'03:00',resultado:null},
+  {id:'g71',local:'Senegal',visitante:'Egipto',grupo:'Grupo L',fecha:'2026-07-01',hora:'00:00',resultado:null},
+  {id:'g72',local:'Eslovaquia',visitante:'Inglaterra',grupo:'Grupo L',fecha:'2026-07-01',hora:'00:00',resultado:null},
+];
+
+// ═══ SELECCIONES CON PLANTILLAS ═══
+const SELECCIONES = {
+  'España':{bandera:'🇪🇸',grupo:'Grupo H',jugadores:[
+    {d:1,pos:'POR',n:'Unai Simón',club:'Athletic Club',edad:27},
+    {d:13,pos:'POR',n:'David Raya',club:'Arsenal',edad:29},
+    {d:2,pos:'DEF',n:'Dani Carvajal',club:'Real Madrid',edad:32},
+    {d:3,pos:'DEF',n:'Alejandro Grimaldo',club:'Bayer Leverkusen',edad:29},
+    {d:4,pos:'DEF',n:'Pau Cubarsí',club:'FC Barcelona',edad:18},
+    {d:5,pos:'DEF',n:'Robin Le Normand',club:'Atlético Madrid',edad:27},
+    {d:6,pos:'MED',n:'Mikel Merino',club:'Arsenal',edad:28},
+    {d:8,pos:'MED',n:'Fabián Ruiz',club:'Paris SG',edad:28},
+    {d:16,pos:'MED',n:'Rodri',club:'Manchester City',edad:28},
+    {d:20,pos:'MED',n:'Pedri',club:'FC Barcelona',edad:22},
+    {d:22,pos:'MED',n:'Martín Zubimendi',club:'Real Sociedad',edad:25},
+    {d:7,pos:'DEL',n:'Álvaro Morata',club:'AC Milan',edad:31},
+    {d:9,pos:'DEL',n:'Lamine Yamal',club:'FC Barcelona',edad:17},
+    {d:10,pos:'DEL',n:'Dani Olmo',club:'FC Barcelona',edad:26},
+    {d:11,pos:'DEL',n:'Nico Williams',club:'Athletic Club',edad:22},
+    {d:17,pos:'DEL',n:'Mikel Oyarzabal',club:'Real Sociedad',edad:27},
+  ]},
+  'Francia':{bandera:'🇫🇷',grupo:'Grupo I',jugadores:[
+    {d:1,pos:'POR',n:'Mike Maignan',club:'AC Milan',edad:28},
+    {d:2,pos:'DEF',n:'Benjamin Pavard',club:'Inter Milán',edad:28},
+    {d:3,pos:'DEF',n:'Lucas Hernández',club:'Bayern Munich',edad:28},
+    {d:5,pos:'DEF',n:'Jules Koundé',club:'FC Barcelona',edad:25},
+    {d:21,pos:'DEF',n:'Théo Hernández',club:'AC Milan',edad:26},
+    {d:6,pos:'MED',n:'Eduardo Camavinga',club:'Real Madrid',edad:21},
+    {d:8,pos:'MED',n:'Aurélien Tchouaméni',club:'Real Madrid',edad:24},
+    {d:14,pos:'MED',n:'Adrien Rabiot',club:'Juventus',edad:29},
+    {d:7,pos:'DEL',n:'Antoine Griezmann',club:'Atlético Madrid',edad:33},
+    {d:10,pos:'DEL',n:'Kylian Mbappé',club:'Real Madrid',edad:25},
+    {d:11,pos:'DEL',n:'Ousmane Dembélé',club:'Paris SG',edad:27},
+    {d:20,pos:'DEL',n:'Marcus Thuram',club:'Inter Milán',edad:26},
+  ]},
+  'Alemania':{bandera:'🇩🇪',grupo:'Grupo E',jugadores:[
+    {d:1,pos:'POR',n:'Manuel Neuer',club:'Bayern Munich',edad:38},
+    {d:6,pos:'MED',n:'Joshua Kimmich',club:'Bayern Munich',edad:29},
+    {d:8,pos:'MED',n:'Leon Goretzka',club:'Bayern Munich',edad:29},
+    {d:18,pos:'MED',n:'Florian Wirtz',club:'Bayer Leverkusen',edad:21},
+    {d:21,pos:'MED',n:'İlkay Gündoğan',club:'FC Barcelona',edad:33},
+    {d:4,pos:'DEF',n:'Jonathan Tah',club:'Bayer Leverkusen',edad:28},
+    {d:15,pos:'DEF',n:'Niklas Süle',club:'Dortmund',edad:28},
+    {d:7,pos:'DEL',n:'Kai Havertz',club:'Arsenal',edad:25},
+    {d:9,pos:'DEL',n:'Niclas Füllkrug',club:'Dortmund',edad:31},
+    {d:10,pos:'DEL',n:'Jamal Musiala',club:'Bayern Munich',edad:21},
+    {d:11,pos:'DEL',n:'Leroy Sané',club:'Bayern Munich',edad:28},
+    {d:13,pos:'DEL',n:'Thomas Müller',club:'Bayern Munich',edad:34},
+  ]},
+  'Brasil':{bandera:'🇧🇷',grupo:'Grupo C',jugadores:[
+    {d:1,pos:'POR',n:'Alisson',club:'Liverpool',edad:31},
+    {d:4,pos:'DEF',n:'Marquinhos',club:'Paris SG',edad:30},
+    {d:5,pos:'DEF',n:'Gabriel Magalhães',club:'Arsenal',edad:26},
+    {d:14,pos:'DEF',n:'Éder Militão',club:'Real Madrid',edad:26},
+    {d:2,pos:'DEF',n:'Danilo',club:'Flamengo',edad:33},
+    {d:6,pos:'MED',n:'Casemiro',club:'Manchester Utd',edad:32},
+    {d:8,pos:'MED',n:'Bruno Guimarães',club:'Newcastle',edad:26},
+    {d:7,pos:'DEL',n:'Rodrygo',club:'Real Madrid',edad:23},
+    {d:10,pos:'DEL',n:'Neymar Jr',club:'Al-Hilal',edad:32},
+    {d:11,pos:'DEL',n:'Raphinha',club:'FC Barcelona',edad:27},
+    {d:20,pos:'DEL',n:'Vinícius Jr',club:'Real Madrid',edad:24},
+    {d:21,pos:'DEL',n:'Endrick',club:'Real Madrid',edad:18},
+  ]},
+  'Argentina':{bandera:'🇦🇷',grupo:'Grupo J',jugadores:[
+    {d:1,pos:'POR',n:'Emiliano Martínez',club:'Aston Villa',edad:31},
+    {d:5,pos:'DEF',n:'Lisandro Martínez',club:'Manchester Utd',edad:26},
+    {d:6,pos:'DEF',n:'Cristian Romero',club:'Tottenham',edad:26},
+    {d:2,pos:'DEF',n:'Nahuel Molina',club:'Atlético Madrid',edad:26},
+    {d:3,pos:'DEF',n:'Nicolás Tagliafico',club:'Lyon',edad:31},
+    {d:14,pos:'MED',n:'Enzo Fernández',club:'Chelsea',edad:23},
+    {d:20,pos:'MED',n:'Alexis Mac Allister',club:'Liverpool',edad:25},
+    {d:7,pos:'MED',n:'Rodrigo De Paul',club:'Atlético Madrid',edad:30},
+    {d:8,pos:'DEL',n:'Alejandro Garnacho',club:'Manchester Utd',edad:20},
+    {d:9,pos:'DEL',n:'Julián Álvarez',club:'Atlético Madrid',edad:24},
+    {d:10,pos:'DEL',n:'Lionel Messi',club:'Inter Miami',edad:37},
+    {d:22,pos:'DEL',n:'Lautaro Martínez',club:'Inter Milán',edad:26},
+  ]},
+  'Portugal':{bandera:'🇵🇹',grupo:'Grupo K',jugadores:[
+    {d:1,pos:'POR',n:'Diogo Costa',club:'FC Porto',edad:24},
+    {d:4,pos:'DEF',n:'Rúben Dias',club:'Manchester City',edad:27},
+    {d:2,pos:'DEF',n:'João Cancelo',club:'FC Barcelona',edad:30},
+    {d:3,pos:'DEF',n:'Nuno Mendes',club:'Paris SG',edad:22},
+    {d:8,pos:'MED',n:'João Félix',club:'FC Barcelona',edad:24},
+    {d:23,pos:'MED',n:'Vitinha',club:'Paris SG',edad:24},
+    {d:6,pos:'MED',n:'Pepe',club:'FC Porto',edad:41},
+    {d:7,pos:'DEL',n:'Cristiano Ronaldo',club:'Al-Nassr',edad:39},
+    {d:10,pos:'DEL',n:'Bernardo Silva',club:'Manchester City',edad:29},
+    {d:11,pos:'DEL',n:'Rafael Leão',club:'AC Milan',edad:24},
+    {d:17,pos:'DEL',n:'Pedro Neto',club:'Chelsea',edad:24},
+    {d:18,pos:'DEL',n:'Gonçalo Ramos',club:'Paris SG',edad:23},
+  ]},
+  'Inglaterra':{bandera:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',grupo:'Grupo L',jugadores:[
+    {d:1,pos:'POR',n:'Jordan Pickford',club:'Everton',edad:30},
+    {d:5,pos:'DEF',n:'John Stones',club:'Manchester City',edad:29},
+    {d:6,pos:'DEF',n:'Marc Guéhi',club:'Crystal Palace',edad:23},
+    {d:2,pos:'DEF',n:'Kyle Walker',club:'Manchester City',edad:34},
+    {d:3,pos:'DEF',n:'Luke Shaw',club:'Manchester Utd',edad:28},
+    {d:4,pos:'MED',n:'Declan Rice',club:'Arsenal',edad:25},
+    {d:10,pos:'MED',n:'Jude Bellingham',club:'Real Madrid',edad:20},
+    {d:7,pos:'DEL',n:'Bukayo Saka',club:'Arsenal',edad:22},
+    {d:9,pos:'DEL',n:'Harry Kane',club:'Bayern Munich',edad:30},
+    {d:11,pos:'DEL',n:'Marcus Rashford',club:'Manchester Utd',edad:26},
+    {d:20,pos:'DEL',n:'Cole Palmer',club:'Chelsea',edad:22},
+    {d:19,pos:'DEL',n:'Ollie Watkins',club:'Aston Villa',edad:28},
+  ]},
+  'Países Bajos':{bandera:'🇳🇱',grupo:'Grupo F',jugadores:[
+    {d:1,pos:'POR',n:'Mark Flekken',club:'Brentford',edad:30},
+    {d:4,pos:'DEF',n:'Virgil van Dijk',club:'Liverpool',edad:32},
+    {d:3,pos:'DEF',n:'Matthijs de Ligt',club:'Bayern Munich',edad:24},
+    {d:2,pos:'DEF',n:'Denzel Dumfries',club:'Inter Milán',edad:27},
+    {d:5,pos:'DEF',n:'Nathan Aké',club:'Manchester City',edad:29},
+    {d:6,pos:'MED',n:'Frenkie de Jong',club:'FC Barcelona',edad:26},
+    {d:21,pos:'MED',n:'Ryan Gravenberch',club:'Liverpool',edad:22},
+    {d:8,pos:'MED',n:'Tijjani Reijnders',club:'AC Milan',edad:25},
+    {d:9,pos:'DEL',n:'Wout Weghorst',club:'Burnley',edad:31},
+    {d:11,pos:'DEL',n:'Xavi Simons',club:'RB Leipzig',edad:21},
+    {d:19,pos:'DEL',n:'Cody Gakpo',club:'Liverpool',edad:24},
+    {d:7,pos:'DEL',n:'Steven Bergwijn',club:'Ajax',edad:26},
+  ]},
+  'Bélgica':{bandera:'🇧🇪',grupo:'Grupo G',jugadores:[
+    {d:1,pos:'POR',n:'Koen Casteels',club:'VfL Wolfsburg',edad:31},
+    {d:4,pos:'DEF',n:'Wout Faes',club:'Leicester',edad:26},
+    {d:2,pos:'DEF',n:'Thomas Meunier',club:'Trabzonspor',edad:32},
+    {d:5,pos:'DEF',n:'Jan Vertonghen',club:'Anderlecht',edad:37},
+    {d:3,pos:'DEF',n:'Leandro Trossard',club:'Arsenal',edad:29},
+    {d:6,pos:'MED',n:'Axel Witsel',club:'Atlético Madrid',edad:35},
+    {d:8,pos:'MED',n:'Youri Tielemans',club:'Aston Villa',edad:27},
+    {d:16,pos:'MED',n:'Amadou Onana',club:'Aston Villa',edad:23},
+    {d:7,pos:'DEL',n:'Kevin De Bruyne',club:'Manchester City',edad:33},
+    {d:9,pos:'DEL',n:'Romelu Lukaku',club:'Napoli',edad:31},
+    {d:10,pos:'DEL',n:'Dodi Lukebakio',club:'Sevilla',edad:26},
+    {d:11,pos:'DEL',n:'Lois Openda',club:'RB Leipzig',edad:24},
+  ]},
+  'Uruguay':{bandera:'🇺🇾',grupo:'Grupo H',jugadores:[
+    {d:1,pos:'POR',n:'Sergio Rochet',club:'Internacional',edad:29},
+    {d:6,pos:'DEF',n:'José María Giménez',club:'Atlético Madrid',edad:29},
+    {d:4,pos:'DEF',n:'Ronald Araújo',club:'FC Barcelona',edad:24},
+    {d:2,pos:'DEF',n:'Nahitan Nández',club:'Cagliari',edad:28},
+    {d:3,pos:'DEF',n:'Mathías Olivera',club:'Napoli',edad:26},
+    {d:8,pos:'MED',n:'Federico Valverde',club:'Real Madrid',edad:25},
+    {d:15,pos:'MED',n:'Manuel Ugarte',club:'Paris SG',edad:22},
+    {d:14,pos:'MED',n:'Rodrigo Bentancur',club:'Tottenham',edad:26},
+    {d:9,pos:'DEL',n:'Darwin Núñez',club:'Liverpool',edad:24},
+    {d:10,pos:'DEL',n:'Giorgian De Arrascaeta',club:'Flamengo',edad:29},
+    {d:11,pos:'DEL',n:'Luis Suárez',club:'Inter Miami',edad:37},
+    {d:21,pos:'DEL',n:'Facundo Torres',club:'Orlando City',edad:24},
+  ]},
+  'México':{bandera:'🇲🇽',grupo:'Grupo A',jugadores:[
+    {d:1,pos:'POR',n:'Guillermo Ochoa',club:'Salernitana',edad:38},
+    {d:13,pos:'POR',n:'Luis Malagón',club:'Club América',edad:26},
+    {d:2,pos:'DEF',n:'Jorge Sánchez',club:'Porto',edad:26},
+    {d:3,pos:'DEF',n:'Jesús Gallardo',club:'Monterrey',edad:29},
+    {d:5,pos:'DEF',n:'Gerardo Arteaga',club:'Getafe',edad:26},
+    {d:6,pos:'DEF',n:'Cesar Montes',club:'Espanyol',edad:27},
+    {d:8,pos:'MED',n:'Edson Álvarez',club:'West Ham',edad:26},
+    {d:18,pos:'MED',n:'Charly Rodríguez',club:'Cruz Azul',edad:22},
+    {d:7,pos:'DEL',n:'Hirving Lozano',club:'PSV',edad:29},
+    {d:9,pos:'DEL',n:'Raúl Jiménez',club:'Fulham',edad:32},
+    {d:11,pos:'DEL',n:'Santiago Giménez',club:'Feyenoord',edad:23},
+    {d:10,pos:'DEL',n:'Alexis Vega',club:'Chivas',edad:27},
+  ]},
+  'Marruecos':{bandera:'🇲🇦',grupo:'Grupo K',jugadores:[
+    {d:1,pos:'POR',n:'Yassine Bounou',club:'Al-Hilal',edad:32},
+    {d:2,pos:'DEF',n:'Achraf Hakimi',club:'Paris SG',edad:25},
+    {d:3,pos:'DEF',n:'Noussair Mazraoui',club:'Manchester Utd',edad:26},
+    {d:5,pos:'DEF',n:'Romain Saïss',club:'Besiktas',edad:33},
+    {d:6,pos:'DEF',n:'Nayef Aguerd',club:'West Ham',edad:27},
+    {d:18,pos:'MED',n:'Sofyan Amrabat',club:'Manchester Utd',edad:27},
+    {d:14,pos:'MED',n:'Ilias Chair',club:'QPR',edad:26},
+    {d:8,pos:'MED',n:'Azzedine Ounahi',club:'Marseille',edad:23},
+    {d:7,pos:'DEL',n:'Hakim Ziyech',club:'Galatasaray',edad:31},
+    {d:9,pos:'DEL',n:'Youssef En-Nesyri',club:'Fenerbahçe',edad:26},
+    {d:10,pos:'DEL',n:'Ezzalzouli',club:'Real Betis',edad:22},
+    {d:11,pos:'DEL',n:'Sofiane Boufal',club:'Angers',edad:30},
+  ]},
+};
+
+// ── SELECCIONES ADICIONALES (grupos reales Mundial 2026) ──
+Object.assign(SELECCIONES, {
+  // GRUPO A
+  'Sudáfrica':{bandera:'🇿🇦',grupo:'Grupo A',jugadores:[
+    {d:1,pos:'POR',n:'Ronwen Williams',club:'Mamelodi Sundowns',edad:32},
+    {d:22,pos:'POR',n:'Ricardo Goss',club:'Siwelele FC',edad:28},
+    {d:23,pos:'POR',n:'Jody February',club:'Stellenbosch',edad:26},
+    {d:2,pos:'DEF',n:'Reeve Frosler',club:'Kaizer Chiefs',edad:27},
+    {d:3,pos:'DEF',n:'Mothobi Mvala',club:'Mamelodi Sundowns',edad:29},
+    {d:4,pos:'DEF',n:'Teboho Mokoena',club:'Mamelodi Sundowns',edad:26},
+    {d:5,pos:'DEF',n:'Siyanda Xulu',club:'Al-Faisaly',edad:32},
+    {d:6,pos:'DEF',n:'Aubrey Modiba',club:'Mamelodi Sundowns',edad:28},
+    {d:14,pos:'DEF',n:'Nkosinathi Sibisi',club:'Orlando Pirates',edad:29},
+    {d:20,pos:'DEF',n:'Khuliso Mudau',club:'Mamelodi Sundowns',edad:26},
+    {d:21,pos:'DEF',n:'Inacio Miguel',club:'Hapoel Tel Aviv',edad:28},
+    {d:7,pos:'MED',n:'Ethan Brooks',club:'UD Las Palmas',edad:24},
+    {d:8,pos:'MED',n:'Thalente Mbatha',club:'Moroka Swallows',edad:25},
+    {d:11,pos:'MED',n:'Bongokuhle Hlongwane',club:'Minnesota United',edad:24},
+    {d:13,pos:'MED',n:'Yusuf Maart',club:'Kaizer Chiefs',edad:27},
+    {d:16,pos:'MED',n:'Sphephelo Sithole',club:'Sekhukhune United',edad:26},
+    {d:9,pos:'DEL',n:'Lyle Foster',club:'Burnley',edad:24},
+    {d:10,pos:'DEL',n:'Relebohile Mofokeng',club:'Orlando Pirates',edad:21},
+    {d:15,pos:'DEL',n:'Percy Tau',club:'Al Ahly',edad:31},
+    {d:17,pos:'DEL',n:'Themba Zwane',club:'Mamelodi Sundowns',edad:32},
+    {d:18,pos:'DEL',n:'Evidence Makgopa',club:'Orlando Pirates',edad:25},
+    {d:19,pos:'DEL',n:'Elias Mokwana',club:'Sekhukhune United',edad:24},
+  ]},
+  'Corea del Sur':{bandera:'🇰🇷',grupo:'Grupo A',jugadores:[
+    {d:1,pos:'POR',n:'Kim Seung-gyu',club:'Vissel Kobe',edad:34},
+    {d:21,pos:'POR',n:'Jo Hyeon-woo',club:'Ulsan HD',edad:32},
+    {d:23,pos:'POR',n:'Song Bum-keun',club:'Jeonbuk',edad:29},
+    {d:2,pos:'DEF',n:'Kim Moon-hwan',club:'Jeonbuk',edad:30},
+    {d:3,pos:'DEF',n:'Kim Jin-su',club:'Kashiwa Reysol',edad:32},
+    {d:4,pos:'DEF',n:'Kim Min-jae',club:'Bayern Munich',edad:28},
+    {d:5,pos:'DEF',n:'Jung Seung-hyun',club:'Vissel Kobe',edad:29},
+    {d:12,pos:'DEF',n:'Lee Ki-je',club:'Suwon',edad:27},
+    {d:15,pos:'DEF',n:'Kwon Kyung-won',club:'Gironés',edad:32},
+    {d:19,pos:'DEF',n:'Seol Young-woo',club:'Hannover 96',edad:24},
+    {d:6,pos:'MED',n:'Hwang In-beom',club:'Vancouver Whitecaps',edad:28},
+    {d:8,pos:'MED',n:'Paik Seung-ho',club:'Jeonbuk',edad:29},
+    {d:16,pos:'MED',n:'Lee Jae-sung',club:'Mainz',edad:32},
+    {d:13,pos:'MED',n:'Yang Hyun-jun',club:'Celtic',edad:23},
+    {d:7,pos:'DEL',n:'Son Heung-min',club:'Tottenham',edad:34},
+    {d:9,pos:'DEL',n:'Cho Gue-sung',club:'Celta Vigo',edad:27},
+    {d:10,pos:'DEL',n:'Lee Kang-in',club:'Paris SG',edad:24},
+    {d:11,pos:'DEL',n:'Hwang Hee-chan',club:'Wolverhampton',edad:29},
+    {d:17,pos:'DEL',n:'Oh Hyeon-gyu',club:'Celtic',edad:24},
+    {d:18,pos:'DEL',n:'Lim Sang-hyeob',club:'Al-Qadsiah',edad:29},
+  ]},
+  'Chequia':{bandera:'🇨🇿',grupo:'Grupo A',jugadores:[
+    {d:1,pos:'POR',n:'Jindřich Staněk',club:'Slavia Praha',edad:28},
+    {d:23,pos:'POR',n:'Aleš Mandous',club:'Middlesbrough',edad:31},
+    {d:2,pos:'DEF',n:'Vladimír Coufal',club:'West Ham',edad:32},
+    {d:3,pos:'DEF',n:'Jan Bořil',club:'Slavia Praha',edad:34},
+    {d:4,pos:'DEF',n:'Tomáš Holeš',club:'Slavia Praha',edad:30},
+    {d:5,pos:'DEF',n:'Ladislav Krejčí',club:'Sparta Praha',edad:25},
+    {d:15,pos:'DEF',n:'David Zima',club:'Torino',edad:25},
+    {d:6,pos:'MED',n:'Tomáš Souček',club:'West Ham',edad:29},
+    {d:8,pos:'MED',n:'Lukáš Provod',club:'Slavia Praha',edad:27},
+    {d:10,pos:'MED',n:'Alex Král',club:'Spartak Moscú',edad:27},
+    {d:16,pos:'MED',n:'Jakub Jankto',club:'Cagliari',edad:29},
+    {d:18,pos:'MED',n:'Matěj Juránek',club:'Slavia Praha',edad:23},
+    {d:7,pos:'DEL',n:'Antonín Barák',club:'Fiorentina',edad:30},
+    {d:9,pos:'DEL',n:'Patrik Schick',club:'Bayer Leverkusen',edad:30},
+    {d:11,pos:'DEL',n:'Matěj Jurásek',club:'Slavia Praha',edad:22},
+    {d:17,pos:'DEL',n:'Jan Kuchta',club:'Slavia Praha',edad:28},
+    {d:20,pos:'DEL',n:'Ondřej Lingr',club:'Feyenoord',edad:25},
+  ]},
+  // GRUPO B
+  'Canadá':{bandera:'🇨🇦',grupo:'Grupo B',jugadores:[
+    {d:1,pos:'POR',n:'Maxime Crépeau',club:'LA Galaxy',edad:30},
+    {d:18,pos:'POR',n:'James Pantemis',club:'CF Montréal',edad:27},
+    {d:2,pos:'DEF',n:'Richie Laryea',club:'Nottingham Forest',edad:29},
+    {d:3,pos:'DEF',n:'Alphonso Davies',club:'Bayern Munich',edad:25},
+    {d:4,pos:'DEF',n:'Alistair Johnston',club:'Celtic',edad:26},
+    {d:5,pos:'DEF',n:'Steven Vitória',club:'Estoril',edad:37},
+    {d:12,pos:'DEF',n:'Kamal Miller',club:'MLS',edad:27},
+    {d:15,pos:'DEF',n:'Derek Cornelius',club:'Vancouver',edad:28},
+    {d:6,pos:'MED',n:'Samuel Piette',club:'CF Montréal',edad:30},
+    {d:7,pos:'MED',n:'Stephen Eustáquio',club:'FC Porto',edad:27},
+    {d:8,pos:'MED',n:'Atiba Hutchinson',club:'Besiktas',edad:42},
+    {d:14,pos:'MED',n:'Jonathan Osorio',club:'Toronto FC',edad:32},
+    {d:9,pos:'DEL',n:'Lucas Cavallini',club:'Vancouver',edad:31},
+    {d:10,pos:'DEL',n:'Jonathan David',club:'Lille',edad:25},
+    {d:11,pos:'DEL',n:'Cyle Larin',club:'Valladolid',edad:29},
+    {d:16,pos:'DEL',n:'Tajon Buchanan',club:'Inter Milán',edad:26},
+    {d:17,pos:'DEL',n:'Liam Millar',club:'FC Zürich',edad:25},
+  ]},
+  'Bosnia y Herz.':{bandera:'🇧🇦',grupo:'Grupo B',jugadores:[
+    {d:1,pos:'POR',n:'Nikola Vasilj',club:'St Pauli',edad:29},
+    {d:23,pos:'POR',n:'Ibrahim Šehić',club:'Konyaspor',edad:37},
+    {d:2,pos:'DEF',n:'Sead Kolašinac',club:'Atalanta',edad:31},
+    {d:5,pos:'DEF',n:'Ermin Bičakčić',club:'Wolfsberg',edad:35},
+    {d:4,pos:'DEF',n:'Dario Šimić',club:'Dinamo Zagreb',edad:26},
+    {d:3,pos:'DEF',n:'Haris Hajradinović',club:'Adana Demirspor',edad:27},
+    {d:14,pos:'DEF',n:'Anel Ahmedhodžić',club:'Sheffield Utd',edad:26},
+    {d:6,pos:'MED',n:'Miralem Pjanić',club:'Sharjah',edad:35},
+    {d:8,pos:'MED',n:'Haris Hajradinović',club:'Adana',edad:27},
+    {d:10,pos:'MED',n:'Amer Gojak',club:'Trabzonspor',edad:28},
+    {d:16,pos:'MED',n:'Armin Hodžić',club:'Ankaraspor',edad:31},
+    {d:7,pos:'DEL',n:'Edin Džeko',club:'Fenerbahçe',edad:40},
+    {d:9,pos:'DEL',n:'Ermedin Demirović',club:'Stuttgart',edad:27},
+    {d:11,pos:'DEL',n:'Anel Husić',club:'Stuttgart',edad:22},
+    {d:17,pos:'DEL',n:'Deni Milošević',club:'Vitesse',edad:25},
+  ]},
+  'Qatar':{bandera:'🇶🇦',grupo:'Grupo B',jugadores:[
+    {d:1,pos:'POR',n:'Meshaal Barsham',club:'Al-Sadd',edad:25},
+    {d:21,pos:'POR',n:'Saad Al Sheeb',club:'Al-Sadd',edad:32},
+    {d:2,pos:'DEF',n:'Pedro Miguel',club:'Al-Duhail',edad:32},
+    {d:3,pos:'DEF',n:'Homam Ahmed',club:'Al-Sadd',edad:24},
+    {d:4,pos:'DEF',n:'Bassam Al-Rawi',club:'Al-Gharafa',edad:29},
+    {d:5,pos:'DEF',n:'Tarek Salman',club:'Al-Sadd',edad:28},
+    {d:13,pos:'DEF',n:'Abdelkarim Hassan',club:'Al-Sadd',edad:30},
+    {d:6,pos:'MED',n:'Ali Asad',club:'Al-Sadd',edad:25},
+    {d:8,pos:'MED',n:'Karim Boudiaf',club:'Al-Duhail',edad:34},
+    {d:10,pos:'MED',n:'Hassan Al-Haydos',club:'Al-Sadd',edad:33},
+    {d:14,pos:'MED',n:'Ismaeel Mohammad',club:'Al-Sadd',edad:27},
+    {d:7,pos:'DEL',n:'Akram Afif',club:'Al-Sadd',edad:28},
+    {d:9,pos:'DEL',n:'Almoez Ali',club:'Al-Duhail',edad:28},
+    {d:11,pos:'DEL',n:'Mohammed Muntari',club:'Al-Duhail',edad:27},
+    {d:19,pos:'DEL',n:'Ahmad Al Rawi',club:'Al-Gharafa',edad:24},
+  ]},
+  'Suiza':{bandera:'🇨🇭',grupo:'Grupo B',jugadores:[
+    {d:1,pos:'POR',n:'Yann Sommer',club:'Inter Milán',edad:36},
+    {d:21,pos:'POR',n:'Gregor Kobel',club:'Dortmund',edad:27},
+    {d:2,pos:'DEF',n:'Silvan Widmer',club:'Mainz',edad:31},
+    {d:3,pos:'DEF',n:'Ricardo Rodríguez',club:'Torino',edad:32},
+    {d:4,pos:'DEF',n:'Nico Elvedi',club:'Gladbach',edad:28},
+    {d:5,pos:'DEF',n:'Manuel Akanji',club:'Manchester City',edad:29},
+    {d:13,pos:'DEF',n:'Fabian Schär',club:'Newcastle',edad:33},
+    {d:6,pos:'MED',n:'Denis Zakaria',club:'Monaco',edad:28},
+    {d:8,pos:'MED',n:'Granit Xhaka',club:'Bayer Leverkusen',edad:33},
+    {d:10,pos:'MED',n:'Fabian Rieder',club:'Stade Rennais',edad:23},
+    {d:16,pos:'MED',n:'Remo Freuler',club:'Nottingham Forest',edad:32},
+    {d:7,pos:'DEL',n:'Breel Embolo',club:'Monaco',edad:28},
+    {d:9,pos:'DEL',n:'Haris Seferović',club:'Galatasaray',edad:33},
+    {d:11,pos:'DEL',n:'Noah Okafor',club:'AC Milan',edad:25},
+    {d:17,pos:'DEL',n:'Dan Ndoye',club:'Bologna',edad:24},
+    {d:23,pos:'DEL',n:'Zeki Amdouni',club:'Burnley',edad:24},
+  ]},
+  // GRUPO C
+  'Croacia':{bandera:'🇭🇷',grupo:'Grupo C',jugadores:[
+    {d:1,pos:'POR',n:'Dominik Livaković',club:'Fenerbahçe',edad:29},
+    {d:23,pos:'POR',n:'Ivo Grbić',club:'Atlético Madrid',edad:28},
+    {d:2,pos:'DEF',n:'Josip Stanišić',club:'Bayer Leverkusen',edad:24},
+    {d:3,pos:'DEF',n:'Borna Sosa',club:'Stuttgart',edad:27},
+    {d:5,pos:'DEF',n:'Duje Ćaleta-Car',club:'Southampton',edad:28},
+    {d:6,pos:'DEF',n:'Dejan Lovren',club:'Zenit',edad:35},
+    {d:19,pos:'DEF',n:'Martin Erlić',club:'RB Leipzig',edad:27},
+    {d:8,pos:'MED',n:'Mateo Kovačić',club:'Manchester City',edad:30},
+    {d:10,pos:'MED',n:'Luka Modrić',club:'Real Madrid',edad:40},
+    {d:11,pos:'MED',n:'Marcelo Brozović',club:'Al-Nassr',edad:32},
+    {d:14,pos:'MED',n:'Lovro Majer',club:'Wolfsburg',edad:27},
+    {d:7,pos:'DEL',n:'Ivan Perišić',club:'Hajduk Split',edad:36},
+    {d:9,pos:'DEL',n:'Andrej Kramarić',club:'Hoffenheim',edad:34},
+    {d:15,pos:'DEL',n:'Bruno Petković',club:'Zenit',edad:30},
+    {d:16,pos:'DEL',n:'Marko Pjaca',club:'Torino',edad:30},
+    {d:17,pos:'DEL',n:'Ante Budimir',club:'Osasuna',edad:33},
+  ]},
+  'Senegal':{bandera:'🇸🇳',grupo:'Grupo C',jugadores:[
+    {d:1,pos:'POR',n:'Édouard Mendy',club:'Chelsea',edad:32},
+    {d:16,pos:'POR',n:'Alfred Gomis',club:'Rennes',edad:32},
+    {d:2,pos:'DEF',n:'Moussa Wagué',club:'PAOK',edad:27},
+    {d:3,pos:'DEF',n:'Abdou Diallo',club:'RB Leipzig',edad:28},
+    {d:4,pos:'DEF',n:'Kalidou Koulibaly',club:'Al-Hilal',edad:33},
+    {d:5,pos:'DEF',n:'Ibrahima Konaté',club:'Liverpool',edad:26},
+    {d:12,pos:'DEF',n:'Youssouf Sabaly',club:'Real Betis',edad:32},
+    {d:6,pos:'MED',n:'Idrissa Gueye',club:'Éverton',edad:35},
+    {d:8,pos:'MED',n:'Pape Matar Sarr',club:'Tottenham',edad:23},
+    {d:10,pos:'MED',n:'Sadio Mané',club:'Al-Nassr',edad:33},
+    {d:14,pos:'MED',n:'Nampalys Mendy',club:'Leicester',edad:33},
+    {d:7,pos:'DEL',n:'Ismaïla Sarr',club:'Crystal Palace',edad:27},
+    {d:9,pos:'DEL',n:'Boulaye Dia',club:'Lazio',edad:28},
+    {d:11,pos:'DEL',n:'Nicolas Jackson',club:'Chelsea',edad:24},
+    {d:19,pos:'DEL',n:'Habib Diallo',club:'Strasbourg',edad:29},
+  ]},
+  // GRUPO D
+  'Estados Unidos':{bandera:'🇺🇸',grupo:'Grupo D',jugadores:[
+    {d:1,pos:'POR',n:'Matt Turner',club:'Crystal Palace',edad:30},
+    {d:18,pos:'POR',n:'Ethan Horvath',club:'Luton Town',edad:29},
+    {d:2,pos:'DEF',n:'Sergino Dest',club:'AC Milan',edad:24},
+    {d:3,pos:'DEF',n:'Antonee Robinson',club:'Fulham',edad:27},
+    {d:4,pos:'DEF',n:'Miles Robinson',club:'Atlanta United',edad:27},
+    {d:5,pos:'DEF',n:'Tim Ream',club:'Fulham',edad:36},
+    {d:14,pos:'DEF',n:'Joe Scally',club:'Gladbach',edad:22},
+    {d:6,pos:'MED',n:'Tyler Adams',club:'AFC Bournemouth',edad:26},
+    {d:8,pos:'MED',n:'Yunus Musah',club:'AC Milan',edad:23},
+    {d:10,pos:'MED',n:'Christian Pulisic',club:'AC Milan',edad:27},
+    {d:13,pos:'MED',n:'Weston McKennie',club:'Juventus',edad:27},
+    {d:7,pos:'DEL',n:'Gio Reyna',club:'Nottingham Forest',edad:23},
+    {d:9,pos:'DEL',n:'Josh Sargent',club:'Norwich City',edad:25},
+    {d:11,pos:'DEL',n:'Tim Weah',club:'Juventus',edad:25},
+    {d:17,pos:'DEL',n:'Ricardo Pepi',club:'PSV Eindhoven',edad:23},
+    {d:22,pos:'DEL',n:'Folarin Balogun',club:'Monaco',edad:24},
+  ]},
+  'Panamá':{bandera:'🇵🇦',grupo:'Grupo D',jugadores:[
+    {d:1,pos:'POR',n:'Luis Mejía',club:'Independiente',edad:26},
+    {d:12,pos:'POR',n:'Orlando Mosquera',club:'Peñarol',edad:30},
+    {d:2,pos:'DEF',n:'Fidel Escobar',club:'New England',edad:29},
+    {d:3,pos:'DEF',n:'Eric Davis',club:'Columbus Crew',edad:33},
+    {d:4,pos:'DEF',n:'Harold Cummings',club:'Santos Laguna',edad:31},
+    {d:5,pos:'DEF',n:'Roderick Miller',club:'Columbus Crew',edad:30},
+    {d:15,pos:'DEF',n:'César Yanis',club:'Chivas',edad:26},
+    {d:6,pos:'MED',n:'Adalberto Carrasquilla',club:'Houston Dynamo',edad:26},
+    {d:8,pos:'MED',n:'Édgar Bárcenas',club:'Nürnberg',edad:29},
+    {d:10,pos:'MED',n:'Alberto Quintero',club:'Universitario',edad:36},
+    {d:14,pos:'MED',n:'Aníbal Godoy',club:'Nashville SC',edad:36},
+    {d:7,pos:'DEL',n:'José Fajardo',club:'FC Dallas',edad:27},
+    {d:9,pos:'DEL',n:'Gabriel Torres',club:'Al-Kuwait',edad:35},
+    {d:11,pos:'DEL',n:'Ismael Díaz',club:'Porto',edad:24},
+    {d:17,pos:'DEL',n:'Rolando Blackburn',club:'Orlando City',edad:28},
+  ]},
+  'Irán':{bandera:'🇮🇷',grupo:'Grupo D',jugadores:[
+    {d:1,pos:'POR',n:'Alireza Beiranvand',club:'Club Brugge',edad:32},
+    {d:12,pos:'POR',n:'Hossein Hosseini',club:'Persepolis',edad:30},
+    {d:2,pos:'DEF',n:'Sadegh Moharrami',club:'Dinamo Zagreb',edad:28},
+    {d:3,pos:'DEF',n:'Milad Mohammadi',club:'AEK Atenas',edad:31},
+    {d:4,pos:'DEF',n:'Majid Hosseini',club:'Kasımpaşa',edad:26},
+    {d:5,pos:'DEF',n:'Shoja Khalilzadeh',club:'Sepahan',edad:33},
+    {d:14,pos:'DEF',n:'Ramin Rezaeian',club:'Kortrijk',edad:34},
+    {d:6,pos:'MED',n:'Saeid Ezatolahi',club:'Vejle',edad:28},
+    {d:8,pos:'MED',n:'Ali Gholizadeh',club:'Gent',edad:28},
+    {d:10,pos:'MED',n:'Mehdi Taremi',club:'Inter Milán',edad:32},
+    {d:16,pos:'MED',n:'Ahmad Noorollahi',club:'Sepahan',edad:30},
+    {d:7,pos:'DEL',n:'Sardar Azmoun',club:'AS Roma',edad:30},
+    {d:9,pos:'DEL',n:'Allahyar Sayyadmanesh',club:'Hull City',edad:25},
+    {d:11,pos:'DEL',n:'Karim Ansarifard',club:'Persepolis',edad:34},
+    {d:17,pos:'DEL',n:'Morteza Pouraliganji',club:'Al-Sail',edad:33},
+  ]},
+  'Ecuador':{bandera:'🇪🇨',grupo:'Grupo D',jugadores:[
+    {d:1,pos:'POR',n:'Hernán Galíndez',club:'Aucas',edad:35},
+    {d:12,pos:'POR',n:'Alexander Domínguez',club:'LDU Quito',edad:36},
+    {d:2,pos:'DEF',n:'Angelo Preciado',club:'Genk',edad:27},
+    {d:3,pos:'DEF',n:'Pervis Estupiñán',club:'Brighton',edad:27},
+    {d:4,pos:'DEF',n:'Robert Arboleda',club:'São Paulo',edad:32},
+    {d:5,pos:'DEF',n:'Piero Hincapié',club:'Bayer Leverkusen',edad:23},
+    {d:15,pos:'DEF',n:'Xavier Arreaga',club:'Seattle Sounders',edad:30},
+    {d:6,pos:'MED',n:'Carlos Gruezo',club:'FC Augsburg',edad:29},
+    {d:8,pos:'MED',n:'Moisés Caicedo',club:'Chelsea',edad:23},
+    {d:10,pos:'MED',n:'Gonzalo Plata',club:'Valladolid',edad:24},
+    {d:16,pos:'MED',n:'Jhegson Méndez',club:'LA Galaxy',edad:27},
+    {d:7,pos:'DEL',n:'Ángel Mena',club:'León',edad:35},
+    {d:9,pos:'DEL',n:'Enner Valencia',club:'Fenerbahçe',edad:34},
+    {d:11,pos:'DEL',n:'Jeremy Sarmiento',club:'Brighton',edad:23},
+    {d:13,pos:'DEL',n:'Kevin Rodríguez',club:'Ipswich',edad:23},
+  ]},
+  // GRUPO E
+  'Arabia Saudita':{bandera:'🇸🇦',grupo:'Grupo E',jugadores:[
+    {d:1,pos:'POR',n:'Mohammed Al-Owais',club:'Al-Hilal',edad:32},
+    {d:21,pos:'POR',n:'Fawaz Al-Qarni',club:'Al-Qadsiah',edad:26},
+    {d:2,pos:'DEF',n:'Saud Abdulhamid',club:'AS Roma',edad:26},
+    {d:3,pos:'DEF',n:'Abdullah Madu',club:'Al-Hilal',edad:25},
+    {d:4,pos:'DEF',n:'Ali Al-Bulayhi',club:'Al-Hilal',edad:34},
+    {d:5,pos:'DEF',n:'Hassan Tambakti',club:'Al-Shabab',edad:24},
+    {d:13,pos:'DEF',n:'Mohammed Al-Breik',club:'Al-Hilal',edad:24},
+    {d:6,pos:'MED',n:'Sami Al-Najei',club:'Al-Shabab',edad:30},
+    {d:8,pos:'MED',n:'Salman Al-Faraj',club:'Al-Hilal',edad:34},
+    {d:10,pos:'MED',n:'Salem Al-Dawsari',club:'Al-Hilal',edad:32},
+    {d:14,pos:'MED',n:'Abdulellah Al-Malki',club:'Al-Hilal',edad:26},
+    {d:7,pos:'DEL',n:'Firas Al-Buraikan',club:'Al-Fateh',edad:25},
+    {d:9,pos:'DEL',n:'Saleh Al-Shehri',club:'Al-Hilal',edad:29},
+    {d:11,pos:'DEL',n:'Haitham Asiri',club:'Al-Ettifaq',edad:28},
+    {d:17,pos:'DEL',n:'Moussa Marega',club:'Al-Hilal',edad:33},
+  ]},
+  'Australia':{bandera:'🇦🇺',grupo:'Grupo E',jugadores:[
+    {d:1,pos:'POR',n:'Mat Ryan',club:'AS Roma',edad:33},
+    {d:12,pos:'POR',n:'Andrew Redmayne',club:'Sydney FC',edad:35},
+    {d:2,pos:'DEF',n:'Nathaniel Atkinson',club:'Hearts',edad:25},
+    {d:3,pos:'DEF',n:'Aziz Behich',club:'Dundee United',edad:33},
+    {d:4,pos:'DEF',n:'Harry Souttar',club:'Leicester',edad:27},
+    {d:5,pos:'DEF',n:'Kye Rowles',club:'Hearts',edad:27},
+    {d:14,pos:'DEF',n:'Joel King',club:'FC Kobenhavn',edad:24},
+    {d:6,pos:'MED',n:'Jackson Irvine',club:'St Pauli',edad:31},
+    {d:8,pos:'MED',n:'Riley McGree',club:'Middlesbrough',edad:26},
+    {d:10,pos:'MED',n:'Aaron Mooy',club:'Celtic',edad:34},
+    {d:7,pos:'DEL',n:'Mathew Leckie',club:'Melbourne City',edad:34},
+    {d:9,pos:'DEL',n:'Mitchell Duke',club:'Fagiano Okayama',edad:34},
+    {d:11,pos:'DEL',n:'Martin Boyle',club:'Al-Faisaly',edad:31},
+    {d:17,pos:'DEL',n:'Garang Kuol',club:'Hearts',edad:22},
+    {d:20,pos:'DEL',n:'Ajdin Hrustic',club:'Columbus Crew',edad:28},
+  ]},
+  'Escocia':{bandera:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',grupo:'Grupo E',jugadores:[
+    {d:1,pos:'POR',n:'Angus Gunn',club:'Norwich',edad:29},
+    {d:13,pos:'POR',n:'Craig Gordon',club:'Hearts',edad:42},
+    {d:2,pos:'DEF',n:'Anthony Ralston',club:'Celtic',edad:26},
+    {d:3,pos:'DEF',n:'Andrew Robertson',club:'Liverpool',edad:31},
+    {d:4,pos:'DEF',n:'Grant Hanley',club:'Norwich',edad:33},
+    {d:5,pos:'DEF',n:'Scott McKenna',club:'Nottingham Forest',edad:28},
+    {d:6,pos:'DEF',n:'Liam Cooper',club:'Leeds',edad:33},
+    {d:8,pos:'MED',n:'John McGinn',club:'Aston Villa',edad:30},
+    {d:10,pos:'MED',n:'Billy Gilmour',club:'Brighton',edad:24},
+    {d:14,pos:'MED',n:'Callum McGregor',club:'Celtic',edad:31},
+    {d:16,pos:'MED',n:'Stuart Armstrong',club:'Southampton',edad:32},
+    {d:7,pos:'DEL',n:'James Forrest',club:'Celtic',edad:33},
+    {d:9,pos:'DEL',n:'Lyndon Dykes',club:'QPR',edad:29},
+    {d:11,pos:'DEL',n:'Ryan Christie',club:'AFC Bournemouth',edad:30},
+    {d:17,pos:'DEL',n:'Lawrence Shankland',club:'Hearts',edad:29},
+    {d:20,pos:'DEL',n:'Scott McTominay',club:'Napoli',edad:28},
+  ]},
+  // GRUPO F
+  'Japón':{bandera:'🇯🇵',grupo:'Grupo F',jugadores:[
+    {d:1,pos:'POR',n:'Shuichi Gonda',club:'Shimizu',edad:35},
+    {d:12,pos:'POR',n:'Daniel Schmidt',club:'Club Brugge',edad:33},
+    {d:2,pos:'DEF',n:'Hiroki Sakai',club:'Urawa Reds',edad:34},
+    {d:3,pos:'DEF',n:'Yuto Nagatomo',club:'FC Tokyo',edad:38},
+    {d:4,pos:'DEF',n:'Ko Itakura',club:'Gladbach',edad:28},
+    {d:5,pos:'DEF',n:'Shogo Taniguchi',club:'Kawasaki',edad:32},
+    {d:19,pos:'DEF',n:'Hiroki Ito',club:'Bayern Munich',edad:26},
+    {d:6,pos:'MED',n:'Wataru Endo',club:'Liverpool',edad:31},
+    {d:8,pos:'MED',n:'Gaku Shibasaki',club:'Deportivo Alavés',edad:33},
+    {d:10,pos:'MED',n:'Takumi Minamino',club:'Monaco',edad:30},
+    {d:14,pos:'MED',n:'Junya Ito',club:'Stade Reims',edad:32},
+    {d:7,pos:'DEL',n:'Daichi Kamada',club:'Crystal Palace',edad:29},
+    {d:9,pos:'DEL',n:'Ayase Ueda',club:'Feyenoord',edad:26},
+    {d:11,pos:'DEL',n:'Kaoru Mitoma',club:'Brighton',edad:28},
+    {d:15,pos:'DEL',n:'Takefusa Kubo',club:'Real Sociedad',edad:23},
+    {d:20,pos:'DEL',n:'Ritsu Doan',club:'Freiburg',edad:27},
+  ]},
+  'Suecia':{bandera:'🇸🇪',grupo:'Grupo F',jugadores:[
+    {d:1,pos:'POR',n:'Robin Olsen',club:'Aston Villa',edad:34},
+    {d:12,pos:'POR',n:'Karl-Johan Johnsson',club:'FC Nordsjælland',edad:33},
+    {d:2,pos:'DEF',n:'Mikael Lustig',club:'AIK',edad:38},
+    {d:3,pos:'DEF',n:'Ludwig Augustinsson',club:'Villarreal',edad:30},
+    {d:4,pos:'DEF',n:'Victor Lindelöf',club:'Manchester Utd',edad:30},
+    {d:5,pos:'DEF',n:'Isak Hien',club:'Atalanta',edad:25},
+    {d:6,pos:'DEF',n:'Marcus Danielson',club:'Djurgården',edad:34},
+    {d:8,pos:'MED',n:'Albin Ekdal',club:'Empoli',edad:34},
+    {d:10,pos:'MED',n:'Emil Forsberg',club:'RB Leipzig',edad:33},
+    {d:14,pos:'MED',n:'Dejan Kulusevski',club:'Tottenham',edad:25},
+    {d:16,pos:'MED',n:'Mattias Svanberg',club:'Wolfsburg',edad:26},
+    {d:7,pos:'DEL',n:'Alexander Isak',club:'Newcastle',edad:26},
+    {d:9,pos:'DEL',n:'Robin Quaison',club:'Mainz',edad:31},
+    {d:11,pos:'DEL',n:'Jordan Larsson',club:'Spartak Moscú',edad:27},
+    {d:17,pos:'DEL',n:'Viktor Gyökeres',club:'Sporting CP',edad:27},
+    {d:19,pos:'DEL',n:'Samuel Chukwueze',club:'---',edad:26},
+  ]},
+  'Túnez':{bandera:'🇹🇳',grupo:'Grupo F',jugadores:[
+    {d:1,pos:'POR',n:'Aymen Dahmen',club:'Millwall',edad:28},
+    {d:16,pos:'POR',n:'Bechir Ben Said',club:'CS Sfaxien',edad:33},
+    {d:2,pos:'DEF',n:'Mohamed Drager',club:'KV Oostende',edad:28},
+    {d:3,pos:'DEF',n:'Dylan Bronn',club:'Salernitana',edad:29},
+    {d:4,pos:'DEF',n:'Montassar Talbi',club:'Club Brugge',edad:26},
+    {d:5,pos:'DEF',n:'Yassine Meriah',club:'CS Sfaxien',edad:31},
+    {d:6,pos:'DEF',n:'Ali Abdi',club:'Valenciennes',edad:29},
+    {d:8,pos:'MED',n:'Aïssa Laïdouni',club:'Union Berlin',edad:28},
+    {d:10,pos:'MED',n:'Hannibal Mejbri',club:'Manchester Utd',edad:22},
+    {d:14,pos:'MED',n:'Ellyes Skhiri',club:'Eintracht Frankfurt',edad:29},
+    {d:7,pos:'DEL',n:'Wahbi Khazri',club:'Montpellier',edad:33},
+    {d:9,pos:'DEL',n:'Seifeddine Jaziri',club:'Konyaspor',edad:33},
+    {d:11,pos:'DEL',n:'Naïm Sliti',club:'Dijon',edad:31},
+    {d:17,pos:'DEL',n:'Youssef Msakni',club:'Al-Arabi',edad:33},
+    {d:19,pos:'DEL',n:'Ala Eddine Marzouki',club:'Goztepe',edad:25},
+  ]},
+  // GRUPO G
+  'Costa de Marfil':{bandera:'🇨🇮',grupo:'Grupo G',jugadores:[
+    {d:1,pos:'POR',n:'Yahia Fofana',club:'Monaco',edad:31},
+    {d:16,pos:'POR',n:'Badra Sangare',club:'Sporting CP',edad:30},
+    {d:2,pos:'DEF',n:'Serge Aurier',club:'Villarreal',edad:32},
+    {d:3,pos:'DEF',n:'Ghislain Konan',club:'Reims',edad:29},
+    {d:4,pos:'DEF',n:'Wilfried Singo',club:'Monaco',edad:24},
+    {d:5,pos:'DEF',n:'Simon Deli',club:'Slavia Praha',edad:32},
+    {d:6,pos:'DEF',n:'Odilon Kossounou',club:'Bayer Leverkusen',edad:24},
+    {d:8,pos:'MED',n:'Ibrahim Sangaré',club:'Nottingham Forest',edad:27},
+    {d:10,pos:'MED',n:'Seko Fofana',club:'Al-Qadsiah',edad:29},
+    {d:14,pos:'MED',n:'Franck Kessié',club:'Al-Ahli',edad:28},
+    {d:7,pos:'DEL',n:'Nicolas Pépé',club:'RC Lens',edad:30},
+    {d:9,pos:'DEL',n:'Sebastien Haller',club:'Dortmund',edad:30},
+    {d:11,pos:'DEL',n:'Simon Adingra',club:'Brighton',edad:23},
+    {d:17,pos:'DEL',n:'Wilfried Zaha',club:'Galatasaray',edad:32},
+    {d:19,pos:'DEL',n:'Jonathan Bamba',club:'Club Brugge',edad:28},
+  ]},
+  'Paraguay':{bandera:'🇵🇾',grupo:'Grupo G',jugadores:[
+    {d:1,pos:'POR',n:'Antony Silva',club:'Olimpia',edad:39},
+    {d:12,pos:'POR',n:'Rodrigo Morínigo',club:'San Lorenzo',edad:28},
+    {d:2,pos:'DEF',n:'Robert Rojas',club:'River Plate',edad:29},
+    {d:3,pos:'DEF',n:'Blas Riveros',club:'Basel',edad:28},
+    {d:4,pos:'DEF',n:'Gustavo Gómez',club:'Palmeiras',edad:31},
+    {d:5,pos:'DEF',n:'Fabián Balbuena',club:'Dinamo Moscú',edad:33},
+    {d:6,pos:'DEF',n:'Júnior Alonso',club:'Atlético Mineiro',edad:31},
+    {d:8,pos:'MED',n:'Miguel Almirón',club:'Newcastle',edad:30},
+    {d:10,pos:'MED',n:'Óscar Romero',club:'San Lorenzo',edad:33},
+    {d:14,pos:'MED',n:'Andrés Cubas',club:'Nottingham Forest',edad:28},
+    {d:16,pos:'MED',n:'Richard Sánchez',club:'América',edad:29},
+    {d:7,pos:'DEL',n:'Antonio Sanabria',club:'Torino',edad:29},
+    {d:9,pos:'DEL',n:'Hernán Pérez',club:'Olimpia',edad:35},
+    {d:11,pos:'DEL',n:'Julio Enciso',club:'Brighton',edad:21},
+    {d:17,pos:'DEL',n:'Braian Samudio',club:'Cagliari',edad:24},
+  ]},
+  'Turquía':{bandera:'🇹🇷',grupo:'Grupo G',jugadores:[
+    {d:1,pos:'POR',n:'Altay Bayındır',club:'Manchester Utd',edad:27},
+    {d:12,pos:'POR',n:'Mert Günok',club:'Besiktas',edad:35},
+    {d:2,pos:'DEF',n:'Zeki Çelik',club:'AS Roma',edad:27},
+    {d:3,pos:'DEF',n:'Ferdi Kadıoğlu',club:'Brighton',edad:25},
+    {d:4,pos:'DEF',n:'Merih Demiral',club:'Al-Qadsiah',edad:26},
+    {d:5,pos:'DEF',n:'Samet Akaydın',club:'Sevilla',edad:28},
+    {d:6,pos:'DEF',n:'Abdülkerim Bardakcı',club:'Galatasaray',edad:27},
+    {d:8,pos:'MED',n:'Salih Özcan',club:'Dortmund',edad:26},
+    {d:10,pos:'MED',n:'Hakan Çalhanoğlu',club:'Inter Milán',edad:31},
+    {d:14,pos:'MED',n:'Orkun Kökçü',club:'Benfica',edad:24},
+    {d:17,pos:'MED',n:'Kaan Ayhan',club:'Galatasaray',edad:30},
+    {d:7,pos:'DEL',n:'Kerem Aktürkoğlu',club:'Galatasaray',edad:26},
+    {d:9,pos:'DEL',n:'Burak Yılmaz',club:'Eyüpspor',edad:39},
+    {d:11,pos:'DEL',n:'Arda Güler',club:'Real Madrid',edad:20},
+    {d:18,pos:'DEL',n:'Baris Alper Yılmaz',club:'Galatasaray',edad:25},
+    {d:20,pos:'DEL',n:'Cenk Tosun',club:'Besiktas',edad:33},
+  ]},
+  // GRUPO H
+  'Cabo Verde':{bandera:'🇨🇻',grupo:'Grupo H',jugadores:[
+    {d:1,pos:'POR',n:'Josimar Dias',club:'Marítimo',edad:29},
+    {d:12,pos:'POR',n:'Zé Toni',club:'Boavista',edad:32},
+    {d:2,pos:'DEF',n:'Stopira',club:'Aarhus',edad:35},
+    {d:3,pos:'DEF',n:'Diney',club:'Boavista',edad:28},
+    {d:4,pos:'DEF',n:'Dylan Tavares',club:'Benfica',edad:22},
+    {d:5,pos:'DEF',n:'Ângelo Lopes',club:'Girondins Bordeaux',edad:27},
+    {d:6,pos:'DEF',n:'Zé Luís',club:'Porto',edad:32},
+    {d:8,pos:'MED',n:'Garry Rodrigues',club:'Al-Rayyan',edad:33},
+    {d:10,pos:'MED',n:'Ryan Mendes',club:'Lille',edad:35},
+    {d:14,pos:'MED',n:'Kenny Rocha Santos',club:'Panetolikos',edad:30},
+    {d:7,pos:'DEL',n:'Djaniny',club:'Al-Ahli Jeddah',edad:32},
+    {d:9,pos:'DEL',n:'Jamiro Monteiro',club:'Middlesbrough',edad:30},
+    {d:11,pos:'DEL',n:'Thiago Tavares',club:'Hatayspor',edad:25},
+    {d:17,pos:'DEL',n:'Steven Fortes',club:'Estoril',edad:32},
+  ]},
+  'Uzbekistán':{bandera:'🇺🇿',grupo:'Grupo H',jugadores:[
+    {d:1,pos:'POR',n:'Abduvohid Nishonov',club:'Pakhtakor',edad:26},
+    {d:12,pos:'POR',n:'Ulugbek Nishonov',club:'Pakhtakor',edad:30},
+    {d:2,pos:'DEF',n:'Sherzod Nishonov',club:'Pakhtakor',edad:27},
+    {d:3,pos:'DEF',n:'Oybek Qodirov',club:'Pakhtakor',edad:24},
+    {d:4,pos:'DEF',n:'Sanjar Tursunov',club:'Pakhtakor',edad:28},
+    {d:5,pos:'DEF',n:'Dostonbek Khamdamov',club:'Pakhtakor',edad:25},
+    {d:6,pos:'MED',n:'Jaloliddin Masharipov',club:'Pakhtakor',edad:30},
+    {d:8,pos:'MED',n:'Otabek Shukurov',club:'Pakhtakor',edad:26},
+    {d:10,pos:'MED',n:'Eldor Shomurodov',club:'AS Roma',edad:28},
+    {d:14,pos:'MED',n:'Muzaffar Kuvvatov',club:'Dinamo Zagreb',edad:25},
+    {d:7,pos:'DEL',n:'Bobur Abdullayev',club:'Pakhtakor',edad:24},
+    {d:9,pos:'DEL',n:'Dostonbek Tursunov',club:'FK Bunyodkor',edad:26},
+    {d:11,pos:'DEL',n:'Shokir Komilov',club:'Dinamo Samarkand',edad:25},
+    {d:17,pos:'DEL',n:'Temurkhuja Abdukholiqov',club:'AGMK',edad:23},
+  ]},
+  // GRUPO I
+  'Noruega':{bandera:'🇳🇴',grupo:'Grupo I',jugadores:[
+    {d:1,pos:'POR',n:'Ørjan Nyland',club:'Southampton',edad:34},
+    {d:12,pos:'POR',n:'Jørgen Strand Larsen',club:'Celta Vigo',edad:24},
+    {d:2,pos:'DEF',n:'Julian Ryerson',club:'Dortmund',edad:27},
+    {d:3,pos:'DEF',n:'Birger Meling',club:'Nantes',edad:30},
+    {d:4,pos:'DEF',n:'Leo Skiri Østigård',club:'Napoli',edad:25},
+    {d:5,pos:'DEF',n:'Andreas Hanche-Olsen',club:'Gent',edad:27},
+    {d:6,pos:'DEF',n:'Kristoffer Ajer',club:'Brentford',edad:26},
+    {d:8,pos:'MED',n:'Martin Ødegaard',club:'Arsenal',edad:26},
+    {d:10,pos:'MED',n:'Sander Berge',club:'Arsenal',edad:27},
+    {d:14,pos:'MED',n:'Patrick Berg',club:'RC Lens',edad:26},
+    {d:7,pos:'DEL',n:'Antonio Nusa',club:'RB Leipzig',edad:20},
+    {d:9,pos:'DEL',n:'Erling Haaland',club:'Manchester City',edad:25},
+    {d:11,pos:'DEL',n:'Mohamed Elyounoussi',club:'Southampton',edad:30},
+    {d:17,pos:'DEL',n:'Alexander Sørloth',club:'Atlético Madrid',edad:29},
+    {d:20,pos:'DEL',n:'Ola Solbakken',club:'AS Roma',edad:25},
+  ]},
+  'Iraq':{bandera:'🇮🇶',grupo:'Grupo I',jugadores:[
+    {d:1,pos:'POR',n:'Jalal Hassan',club:'Zamalek',edad:33},
+    {d:12,pos:'POR',n:'Mohammed Hameed',club:'Al-Zawraa',edad:27},
+    {d:2,pos:'DEF',n:'Ahmed Ibrahim',club:'Al-Shorta',edad:28},
+    {d:3,pos:'DEF',n:'Ali Adnan',club:'Al-Quwa Al-Jawiya',edad:31},
+    {d:4,pos:'DEF',n:'Rebin Sulaka',club:'Norrköping',edad:28},
+    {d:5,pos:'DEF',n:'Saman Amer',club:'Al-Zawraa',edad:29},
+    {d:6,pos:'DEF',n:'Yaser Kasim',club:'Al-Quwa Al-Jawiya',edad:33},
+    {d:8,pos:'MED',n:'Alaa Abdul-Zahra',club:'Persepolis',edad:30},
+    {d:10,pos:'MED',n:'Amjed Attwan',club:'Al-Zawraa',edad:28},
+    {d:14,pos:'MED',n:'Osama Rashid',club:'Al-Quwa Al-Jawiya',edad:29},
+    {d:7,pos:'DEL',n:'Aymen Hussein',club:'Al-Zawraa',edad:27},
+    {d:9,pos:'DEL',n:'Mohanad Ali',club:'Al-Shorta',edad:26},
+    {d:11,pos:'DEL',n:'Hassan Abdulkareem',club:'Al-Quwa Al-Jawiya',edad:28},
+    {d:17,pos:'DEL',n:'Bashar Resan',club:'Al-Zawraa',edad:31},
+  ]},
+  'Colombia':{bandera:'🇨🇴',grupo:'Grupo I',jugadores:[
+    {d:1,pos:'POR',n:'Camilo Vargas',club:'Atlas',edad:33},
+    {d:12,pos:'POR',n:'David Ospina',club:'Retirado',edad:36},
+    {d:2,pos:'DEF',n:'Daniel Muñoz',club:'Crystal Palace',edad:28},
+    {d:3,pos:'DEF',n:'Johan Mojica',club:'Olympiakos',edad:32},
+    {d:4,pos:'DEF',n:'Davinson Sánchez',club:'Galatasaray',edad:28},
+    {d:5,pos:'DEF',n:'Yerry Mina',club:'Fiorentina',edad:30},
+    {d:6,pos:'DEF',n:'Carlos Cuesta',club:'KRC Genk',edad:26},
+    {d:8,pos:'MED',n:'Mateus Uribe',club:'Porto',edad:33},
+    {d:10,pos:'MED',n:'James Rodríguez',club:'Rayo Vallecano',edad:34},
+    {d:14,pos:'MED',n:'Wilmar Barrios',club:'Zenit',edad:31},
+    {d:16,pos:'MED',n:'Richard Ríos',club:'Palmeiras',edad:25},
+    {d:7,pos:'DEL',n:'Cucho Hernández',club:'Columbus Crew',edad:26},
+    {d:9,pos:'DEL',n:'Falcao García',club:'Retirado',edad:39},
+    {d:11,pos:'DEL',n:'Luis Díaz',club:'Liverpool',edad:28},
+    {d:17,pos:'DEL',n:'Rafael Santos Borré',club:'Frankfurt',edad:29},
+    {d:19,pos:'DEL',n:'Jhon Durán',club:'Aston Villa',edad:21},
+  ]},
+  // GRUPO J
+  'Argelia':{bandera:'🇩🇿',grupo:'Grupo J',jugadores:[
+    {d:1,pos:'POR',n:'Raïs M\'Bolhi',club:'Al-Ettifaq',edad:38},
+    {d:16,pos:'POR',n:'Alexandre Oukidja',club:'Metz',edad:36},
+    {d:2,pos:'DEF',n:'Aïssa Mandi',club:'Villarreal',edad:33},
+    {d:3,pos:'DEF',n:'Ramy Bensebaïni',club:'Gladbach',edad:29},
+    {d:4,pos:'DEF',n:'Djamel Benlamri',club:'Al-Shabab',edad:34},
+    {d:5,pos:'DEF',n:'Yacine Brahimi',club:'Al-Rayyan',edad:34},
+    {d:6,pos:'DEF',n:'Hossam Aouar',club:'AS Roma',edad:27},
+    {d:8,pos:'MED',n:'Adlène Guedioura',club:'Al-Arabi',edad:38},
+    {d:10,pos:'MED',n:'Sofiane Feghouli',club:'Galatasaray',edad:35},
+    {d:14,pos:'MED',n:'Ismaël Bennacer',club:'AC Milan',edad:27},
+    {d:7,pos:'DEL',n:'Baghdad Bounedjah',club:'Al-Sadd',edad:33},
+    {d:9,pos:'DEL',n:'Islam Slimani',club:'Monaco',edad:36},
+    {d:11,pos:'DEL',n:'Riyad Mahrez',club:'Al-Ahli',edad:34},
+    {d:17,pos:'DEL',n:'Anis Benali',club:'Nantes',edad:30},
+  ]},
+  'Austria':{bandera:'🇦🇹',grupo:'Grupo J',jugadores:[
+    {d:1,pos:'POR',n:'Patrick Pentz',club:'Bayer Leverkusen',edad:27},
+    {d:12,pos:'POR',n:'Alexander Schlager',club:'RB Leipzig',edad:31},
+    {d:2,pos:'DEF',n:'Stefan Posch',club:'Bologna',edad:27},
+    {d:3,pos:'DEF',n:'Philipp Mwene',club:'Mainz',edad:30},
+    {d:4,pos:'DEF',n:'Kevin Danso',club:'RC Lens',edad:25},
+    {d:5,pos:'DEF',n:'Martin Hinteregger',club:'Retirado',edad:32},
+    {d:6,pos:'DEF',n:'Philipp Lienhart',club:'Freiburg',edad:28},
+    {d:8,pos:'MED',n:'Konrad Laimer',club:'Bayern Munich',edad:27},
+    {d:10,pos:'MED',n:'Marcel Sabitzer',club:'Dortmund',edad:31},
+    {d:14,pos:'MED',n:'Florian Grillitsch',club:'Ajax',edad:30},
+    {d:7,pos:'DEL',n:'Marko Arnautović',club:'Inter Milán',edad:36},
+    {d:9,pos:'DEL',n:'Michael Gregoritsch',club:'Freiburg',edad:30},
+    {d:11,pos:'DEL',n:'Christoph Baumgartner',club:'RB Leipzig',edad:25},
+    {d:17,pos:'DEL',n:'Patrick Wimmer',club:'VfL Wolfsburg',edad:24},
+  ]},
+  'Jordania':{bandera:'🇯🇴',grupo:'Grupo J',jugadores:[
+    {d:1,pos:'POR',n:'Yazeed Abulaila',club:'Al-Faisaly',edad:30},
+    {d:12,pos:'POR',n:'Mahmoud Shunaybat',club:'Al-Wahdat',edad:26},
+    {d:2,pos:'DEF',n:'Badr Nofal',club:'Al-Faisaly',edad:28},
+    {d:3,pos:'DEF',n:'Baha\' Faisal',club:'Al-Wahdat',edad:27},
+    {d:4,pos:'DEF',n:'Yazan Al-Naimat',club:'Al-Jazeera',edad:26},
+    {d:5,pos:'DEF',n:'Ahmed Ibrahim',club:'Al-Faisaly',edad:30},
+    {d:8,pos:'MED',n:'Ahmad Qasim',club:'Al-Wahdat',edad:29},
+    {d:10,pos:'MED',n:'Musa Al-Taamari',club:'Montpellier',edad:26},
+    {d:14,pos:'MED',n:'Naser Jaber',club:'Sepahan',edad:31},
+    {d:7,pos:'DEL',n:'Yasser Al-Jamal',club:'Al-Faisaly',edad:27},
+    {d:9,pos:'DEL',n:'Moussa Al-Tamari',club:'Montpellier',edad:26},
+    {d:11,pos:'DEL',n:'Khaled Al-Shammari',club:'Al-Kuwait',edad:30},
+    {d:17,pos:'DEL',n:'Omar Al-Hajjawi',club:'Al-Jazeera',edad:24},
+  ]},
+  // GRUPO K
+  'República D. Congo':{bandera:'🇨🇩',grupo:'Grupo K',jugadores:[
+    {d:1,pos:'POR',n:'Joël Kiassumbua',club:'Nantes',edad:30},
+    {d:16,pos:'POR',n:'Ben Mellot',club:'Stade Rennais',edad:25},
+    {d:2,pos:'DEF',n:'Dodi Lukebakio',club:'Sevilla',edad:26},
+    {d:3,pos:'DEF',n:'Arthur Masuaku',club:'Besiktas',edad:30},
+    {d:4,pos:'DEF',n:'Chancel Mbemba',club:'Marseille',edad:30},
+    {d:5,pos:'DEF',n:'Théo Bongonda',club:'RC Genk',edad:29},
+    {d:6,pos:'DEF',n:'Christian Luyindama',club:'Galatasaray',edad:30},
+    {d:8,pos:'MED',n:'Siméon Nwankwo',club:'Crotone',edad:29},
+    {d:10,pos:'MED',n:'Neeskens Kebano',club:'Fulham',edad:33},
+    {d:14,pos:'MED',n:'Yannick Bolasie',club:'Middlesbrough',edad:35},
+    {d:7,pos:'DEL',n:'Cédric Bakambu',club:'Brest',edad:33},
+    {d:9,pos:'DEL',n:'Britt Assombalonga',club:'Adana Demirspor',edad:32},
+    {d:11,pos:'DEL',n:'Yoane Wissa',club:'Brentford',edad:28},
+    {d:17,pos:'DEL',n:'Gael Kakuta',club:'RC Lens',edad:33},
+  ]},
+  // GRUPO L
+  'Senegal (L)':{bandera:'🇸🇳',grupo:'Grupo L',jugadores:[]}, // alias redirigido
+  'Eslovaquia':{bandera:'🇸🇰',grupo:'Grupo L',jugadores:[
+    {d:1,pos:'POR',n:'Martin Dúbravka',club:'Newcastle',edad:35},
+    {d:23,pos:'POR',n:'Dominik Takáč',club:'Slovan Bratislava',edad:27},
+    {d:2,pos:'DEF',n:'Peter Pekarík',club:'Hertha Berlin',edad:38},
+    {d:3,pos:'DEF',n:'Milan Škriniar',club:'Paris SG',edad:29},
+    {d:4,pos:'DEF',n:'Denis Vavro',club:'FC Kobenhavn',edad:29},
+    {d:5,pos:'DEF',n:'Lubomir Satka',club:'Dortmund',edad:28},
+    {d:6,pos:'DEF',n:'Norbert Gyömbér',club:'Salernitana',edad:32},
+    {d:8,pos:'MED',n:'Stanislav Lobotka',club:'Napoli',edad:30},
+    {d:10,pos:'MED',n:'Ondrej Duda',club:'Norwich',edad:30},
+    {d:14,pos:'MED',n:'Juraj Kucka',club:'Trabzonspor',edad:37},
+    {d:7,pos:'DEL',n:'Marek Haraslín',club:'Lazio',edad:29},
+    {d:9,pos:'DEL',n:'Robert Bozeník',club:'Feyenoord',edad:25},
+    {d:11,pos:'DEL',n:'Ivan Schranz',club:'Slavia Praha',edad:29},
+    {d:17,pos:'DEL',n:'David Strelec',club:'Slovan Bratislava',edad:24},
+  ]},
+  'Egipto':{bandera:'🇪🇬',grupo:'Grupo L',jugadores:[
+    {d:1,pos:'POR',n:'Mohamed El-Shenawy',club:'Al-Ahly',edad:36},
+    {d:16,pos:'POR',n:'Mostafa Shobeir',club:'Zamalek',edad:30},
+    {d:2,pos:'DEF',n:'Akram Tawfik',club:'Al-Ahly',edad:27},
+    {d:3,pos:'DEF',n:'Omar Kamal',club:'Zamalek',edad:25},
+    {d:4,pos:'DEF',n:'Ahmed Hegazy',club:'Al-Ittihad',edad:33},
+    {d:5,pos:'DEF',n:'Omar Gaber',club:'Los Angeles FC',edad:31},
+    {d:6,pos:'DEF',n:'Mahmoud Hamdi',club:'Al-Ahly',edad:29},
+    {d:8,pos:'MED',n:'Tarek Hamed',club:'Zamalek',edad:34},
+    {d:10,pos:'MED',n:'Mahmoud Hassan Trézéguet',club:'Istanbul Basaksehir',edad:30},
+    {d:14,pos:'MED',n:'Amr El-Sulaya',club:'Al-Ahly',edad:30},
+    {d:7,pos:'DEL',n:'Mohamed Salah',club:'Liverpool',edad:33},
+    {d:9,pos:'DEL',n:'Mostafa Mohamed',club:'Nantes',edad:27},
+    {d:11,pos:'DEL',n:'Omar Marmoush',club:'Manchester City',edad:26},
+    {d:17,pos:'DEL',n:'Kahraba',club:'Al-Ahly',edad:29},
+  ]},
+});
+
+const ZONAS = {
+  'POR':{label:'Porteros',icono:'🧤'},
+  'DEF':{label:'Defensas',icono:'🛡️'},
+  'MED':{label:'Centrocampistas',icono:'⚙️'},
+  'DEL':{label:'Delanteros',icono:'⚡'},
+};
+
+// Códigos ISO para banderas
+const FLAG_CODES = {
+  'España':'es','Francia':'fr','Alemania':'de','Brasil':'br','Argentina':'ar',
+  'Portugal':'pt','Inglaterra':'gb-eng','Países Bajos':'nl','Bélgica':'be',
+  'Uruguay':'uy','México':'mx','Marruecos':'ma','Italia':'it','Croacia':'hr',
+  'Senegal':'sn','Sudáfrica':'za','Corea del Sur':'kr','Chequia':'cz',
+  'Canadá':'ca','Bosnia y Herz.':'ba','Qatar':'qa','Suiza':'ch',
+  'Estados Unidos':'us','Panamá':'pa','Irán':'ir','Ecuador':'ec',
+  'Arabia Saudita':'sa','Australia':'au','Escocia':'gb-sct','Japón':'jp',
+  'Suecia':'se','Túnez':'tn','Costa de Marfil':'ci','Paraguay':'py',
+  'Turquía':'tr','Cabo Verde':'cv','Uzbekistán':'uz','Noruega':'no',
+  'Iraq':'iq','Colombia':'co','Argelia':'dz','Austria':'at','Jordania':'jo',
+  'República D. Congo':'cd','Eslovaquia':'sk','Egipto':'eg',
+};
+
+function flagImg(pais, cls='bandera-img') {
+  const code = FLAG_CODES[pais] || 'un';
+  return `<img class="${cls}" src="https://flagcdn.com/w40/${code}.png" alt="${pais}" onerror="this.style.display='none'">`;
+}
+
+// Mapa equipo → jugadores (para goleador por partido)
+function jugadoresDePartido(equipo) {
+  const sel = SELECCIONES[equipo];
+  if (!sel) return [];
+  return sel.jugadores;
+}
+
+// ═══ ESTADO ═══
+let usuarioActual=null,esAdmin=false,seleccionVista=null;
+
+function initDB(){
+  if(!DB.get('partidos')) DB.set('partidos',PARTIDOS_INICIALES);
+  if(!DB.get('usuarios')) DB.set('usuarios',{});
+  if(!DB.get('pronosticos')) DB.set('pronosticos',{});
+  if(!DB.get('campeon_votos')) DB.set('campeon_votos',{});
+  if(!DB.get('goleador_votos')) DB.set('goleador_votos',{});
+  if(!DB.get('gol_partido')) DB.set('gol_partido',{});
+}
+
+function entrar(){
+  const nombre=document.getElementById('input-nombre').value.trim();
+  const codigo=document.getElementById('input-codigo').value.trim().toLowerCase();
+  if(!nombre){document.getElementById('input-nombre').style.borderColor='var(--ib-rojo)';setTimeout(()=>document.getElementById('input-nombre').style.borderColor='',1500);return;}
+  if(codigo!==CODIGO_SALA&&codigo!==CODIGO_ADMIN){alert('Código incorrecto. Pídelo al administrador.');return;}
+
+  // Verificar lista blanca (si está activada)
+  const esAdminAcceso=(codigo===CODIGO_ADMIN);
+  if(!esAdminAcceso){
+    const lista=DB.get('participantes_permitidos')||null;
+    if(lista&&Object.keys(lista).length>0){
+      const permitidos=Object.keys(lista).map(n=>n.toLowerCase().trim());
+      if(!permitidos.includes(nombre.toLowerCase().trim())){
+        const msgEl=document.getElementById('login-error');
+        msgEl.textContent='❌ "'+nombre+'" no está en la lista. Comprueba tu nombre o contacta con el administrador.';
+        msgEl.style.display='block';
+        document.getElementById('input-nombre').style.borderColor='var(--ib-rojo)';
+        setTimeout(()=>{msgEl.style.display='none';document.getElementById('input-nombre').style.borderColor='';},4000);
+        return;
+      }
+    }
+  }
+
+  esAdmin=esAdminAcceso;
+  usuarioActual=nombre;
+  const u=DB.get('usuarios')||{};
+  u[nombre]=u[nombre]||{nombre,puntos:0,aciertos:0,parciales:0};
+  DB.set('usuarios',u);
+  document.getElementById('header-nombre').textContent=nombre;
+  document.getElementById('avatar-letra').textContent=nombre[0].toUpperCase();
+  if(esAdmin) document.getElementById('tab-btn-admin').style.display='block';
+  document.getElementById('pantalla-login').style.display='none';
+  document.getElementById('pantalla-app').style.display='block';
+  renderAll();
+}
+
+function mostrarTab(tab,el){
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['clasificacion','pronosticos','campeon','resumen','selecciones','instrucciones','admin'].forEach(id=>{
+    const e2=document.getElementById('tab-'+id);if(e2)e2.style.display=(id===tab)?'block':'none';
+  });
+  if(tab==='resumen') renderResumen();
+  if(tab==='instrucciones') renderInstrucciones();
+  if(tab==='selecciones'){seleccionVista=null;renderSelecciones();}
+}
+
+function renderAll(){calcularPuntos();renderClasificacion();renderPronosticos();renderCampeon();if(esAdmin)renderAdmin();}
+
+// ═══ PUNTOS ═══
+function calcularPuntos(){
+  const partidos=DB.get('partidos')||[];
+  const prons=DB.get('pronosticos')||{};
+  const usuarios=DB.get('usuarios')||{};
+  const campeones=DB.get('campeon_votos')||{};
+  const golPart=DB.get('gol_partido')||{};
+  Object.keys(usuarios).forEach(u=>{usuarios[u].puntos=0;usuarios[u].aciertos=0;usuarios[u].parciales=0;});
+  partidos.forEach(p=>{
+    if(!p.resultado) return;
+    const[rL,rV]=p.resultado;
+    Object.keys(usuarios).forEach(u=>{
+      const pron=(prons[u]||{})[p.id];
+      if(pron){
+        const[pL,pV]=pron;
+        if(pL===rL&&pV===rV){usuarios[u].puntos+=3;usuarios[u].aciertos++;}
+        else{const gR=rL>rV?'L':rL<rV?'V':'X',gP=pL>pV?'L':pL<pV?'V':'X';if(gR===gP){usuarios[u].puntos+=1;usuarios[u].parciales++;}}
+      }
+      // Goleador por partido (+1 si acierta)
+      const golReal=(golPart[p.id]||{}).goleadorReal;
+      const golUser=((golPart[p.id]||{}).votos||{})[u];
+      if(golReal&&golUser&&golReal===golUser) usuarios[u].puntos+=1;
+    });
+  });
+  const cf=DB.get('campeon_ganador');
+  if(cf) Object.keys(usuarios).forEach(u=>{if(campeones[u]===cf) usuarios[u].puntos+=10;});
+  const gf=DB.get('goleador_real');
+  if(gf){const gv=DB.get('goleador_votos')||{};Object.keys(usuarios).forEach(u=>{if((gv[u]||'').toLowerCase()===gf.toLowerCase())usuarios[u].puntos+=5;});}
+  DB.set('usuarios',usuarios);
+}
+
+// ═══ CLASIFICACIÓN ═══
+function renderClasificacion(){
+  const usuarios=DB.get('usuarios')||{};
+  const lista=Object.values(usuarios).sort((a,b)=>b.puntos-a.puntos||b.aciertos-a.aciertos);
+  const podioEl=document.getElementById('podio');
+  if(lista.length>=3)podioEl.innerHTML=`<div class="podio">${podioItem(lista[1],2,'🥈')}${podioItem(lista[0],1,'🥇')}${podioItem(lista[2],3,'🥉')}</div>`;
+  else podioEl.innerHTML='';
+  const listaEl=document.getElementById('ranking-lista');
+  if(!lista.length){listaEl.innerHTML='<div class="empty-state"><span class="empty-icon">👥</span>Sin participantes aún</div>';return;}
+  listaEl.innerHTML=lista.slice(3).map((u,i)=>`
+    <div class="ranking-fila ${u.nombre===usuarioActual?'yo':''}">
+      <div class="ranking-pos">${i+4}</div>
+      <div class="avatar" style="width:28px;height:28px;font-size:0.7rem">${u.nombre[0].toUpperCase()}</div>
+      <div style="flex:1"><div class="ranking-nombre">${u.nombre}${u.nombre===usuarioActual?'<span class="badge-yo">TÚ</span>':''}</div><div class="ranking-detalle">${u.aciertos} exactos · ${u.parciales} parciales</div></div>
+      <div class="ranking-pts">${u.puntos} pts</div>
+    </div>`).join('');
+}
+function podioItem(u,pos,medal){return `<div class="podio-item p${pos}"><span class="podio-medalla">${medal}</span><span class="podio-nombre">${u.nombre}</span><div class="podio-pts">${u.puntos}</div><div style="font-size:0.68rem;color:var(--texto2)">pts</div></div>`;}
+
+// ═══ PRONÓSTICOS ═══
+function renderPronosticos(){
+  const partidos=DB.get('partidos')||[];
+  const prons=DB.get('pronosticos')||{};
+  const misPron=prons[usuarioActual]||{};
+  const golPart=DB.get('gol_partido')||{};
+  const ahora=new Date();
+  const grupos={};
+  partidos.forEach(p=>{if(!grupos[p.grupo])grupos[p.grupo]=[];grupos[p.grupo].push(p);});
+  let html='';
+  Object.entries(grupos).forEach(([grupo,ps])=>{
+    html+=`<div class="jornada-label">${grupo}</div>`;
+    ps.forEach(p=>{
+      const fechaP=new Date(p.fecha+'T'+p.hora);
+      const bloq=ahora>=fechaP;
+      const pron=misPron[p.id];
+      const tieneRes=p.resultado!==null;
+      const golDatos=golPart[p.id]||{};
+      const misGolVotos=golDatos.votos||{};
+      const miGolVoto=misGolVotos[usuarioActual]||'';
+      const golReal=golDatos.goleadorReal||'';
+
+      // Resultado texto
+      let estadoPron='';
+      if(tieneRes&&pron){
+        const[rL,rV]=p.resultado,[pL,pV]=pron;
+        if(pL===rL&&pV===rV) estadoPron=`<div class="resultado-real resultado-acierto"><span>✓ Marcador exacto</span><span class="pts-badge pts-3">+3</span></div>`;
+        else{const gR=rL>rV?'L':rL<rV?'V':'X',gP=pL>pV?'L':pL<pV?'V':'X';
+          if(gR===gP) estadoPron=`<div class="resultado-real resultado-parcial"><span>~ Ganador correcto</span><span class="pts-badge pts-1">+1</span></div>`;
+          else estadoPron=`<div class="resultado-real resultado-fallo"><span>✗ Real: ${rL}-${rV}</span><span class="pts-badge pts-0">+0</span></div>`;}
+        // goleador partido
+        if(golReal&&miGolVoto){
+          const acGol=golReal===miGolVoto;
+          estadoPron+=`<div class="resultado-real ${acGol?'resultado-acierto':'resultado-fallo'}" style="margin-top:4px"><span>⚽ Goleador: ${golReal}${acGol?' ✓':''}</span>${acGol?'<span class="pts-badge pts-1">+1</span>':''}</div>`;
+        }
+      } else if(tieneRes) estadoPron=`<div class="resultado-real resultado-fallo"><span>Sin pronóstico (Real: ${p.resultado[0]}-${p.resultado[1]})</span></div>`;
+
+      // Botones goleador — uno por equipo, a su lado
+      const jugLocal=jugadoresDePartido(p.local);
+      const jugVisit=jugadoresDePartido(p.visitante);
+      const tieneJug=jugLocal.length||jugVisit.length;
+      let goleadorHtml='';
+      if(tieneJug&&!tieneRes){
+        const localSafe=p.local.replace(/'/g,"\\'");
+        const visitSafe=p.visitante.replace(/'/g,"\\'");
+        // Determina si el voto actual es de local o visitante
+        const esLocal=miGolVoto&&jugLocal.some(j=>j.n===miGolVoto);
+        const esVisit=miGolVoto&&jugVisit.some(j=>j.n===miGolVoto);
+        goleadorHtml=`<div class="goleador-partido-row">
+          <div class="goleador-partido-label">⚽ Goleador del partido (+1 pt)</div>
+          <div style="display:flex;gap:0.5rem;margin-top:0.375rem;">
+            <div style="flex:1;display:flex;flex-direction:column;gap:0.25rem;align-items:flex-start;">
+              <button class="btn-elegir-goleador ${bloq?'bloq':''} ${esLocal?'activo':''}"
+                onclick="abrirBS('${p.id}','${localSafe}',null)"
+                style="${esLocal?'background:var(--ib-azul);color:#fff;border-color:var(--ib-azul);':''}">
+                ${jugLocal.length?'⚽ '+p.local:'—'}
+              </button>
+              ${esLocal?`<div class="goleador-guardado-txt">✓ ${miGolVoto}</div>`:''}
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:0.25rem;align-items:flex-end;">
+              <button class="btn-elegir-goleador ${bloq?'bloq':''} ${esVisit?'activo':''}"
+                onclick="abrirBS('${p.id}',null,'${visitSafe}')"
+                style="${esVisit?'background:var(--ib-azul);color:#fff;border-color:var(--ib-azul);':''}">
+                ${jugVisit.length?'⚽ '+p.visitante:'—'}
+              </button>
+              ${esVisit?`<div class="goleador-guardado-txt" style="text-align:right;">✓ ${miGolVoto}</div>`:''}
+            </div>
+          </div>
+        </div>`;
+      } else if(tieneJug&&tieneRes&&miGolVoto){
+        goleadorHtml=`<div class="goleador-partido-row"><div class="goleador-partido-label">⚽ Tu goleador apostado</div><div class="goleador-guardado-txt">✓ ${miGolVoto}${golReal?' · Real: '+golReal:''}</div></div>`;
+      }
+
+      html+=`<div class="partido-card ${bloq?'bloqueado':''}">
+        <div class="partido-hora">${bloq&&!tieneRes?'<span class="dot-live"></span>En juego':'📅 '+p.fecha.split('-').reverse().join('/')+' · '+p.hora+' h'}</div>
+        <div class="equipos-row">
+          <div class="equipo-nombre">${p.local}</div>
+          <div class="vs-badge">${tieneRes?p.resultado[0]+'-'+p.resultado[1]:'vs'}</div>
+          <div class="equipo-nombre derecha">${p.visitante}</div>
+        </div>
+        <div class="marcador-inputs">
+          <input class="marcador-input" type="number" min="0" max="20" id="p${p.id}_L" value="${pron?pron[0]:''}" placeholder="0" ${bloq?'disabled':''} onchange="guardarPron('${p.id}')">
+          <span class="marcador-sep">:</span>
+          <input class="marcador-input" type="number" min="0" max="20" id="p${p.id}_V" value="${pron?pron[1]:''}" placeholder="0" ${bloq?'disabled':''} onchange="guardarPron('${p.id}')">
+        </div>
+        ${goleadorHtml}
+        ${!bloq?`<button class="btn-guardar" onclick="guardarPron('${p.id}')">Guardar pronóstico</button>`:''}
+        <div class="pronostico-guardado ${pron&&!tieneRes?'visible':''}" id="saved_${p.id}">${pron&&!tieneRes?'✓ Guardado: '+pron[0]+'-'+pron[1]:''}</div>
+        ${estadoPron}
+      </div>`;
+    });
+  });
+  document.getElementById('lista-partidos').innerHTML=html||'<div class="empty-state"><span class="empty-icon">⚽</span>Sin partidos</div>';
+}
+
+function guardarPron(pid){
+  const vL=parseInt(document.getElementById('p'+pid+'_L').value);
+  const vV=parseInt(document.getElementById('p'+pid+'_V').value);
+  if(isNaN(vL)||isNaN(vV)) return;
+  const pron=DB.get('pronosticos')||{};
+  if(!pron[usuarioActual]) pron[usuarioActual]={};
+  pron[usuarioActual][pid]=[vL,vV];
+  DB.set('pronosticos',pron);
+  const el=document.getElementById('saved_'+pid);
+  if(el){el.textContent='✓ Guardado: '+vL+'-'+vV;el.classList.add('visible');}
+  mostrarToast('Pronóstico guardado ✓');calcularPuntos();renderClasificacion();
+}
+
+// ─── BOTTOM SHEET GOLEADOR ───
+let bsPartidoActual=null;
+
+function abrirBS(pid, local, visitante){
+  bsPartidoActual=pid;
+  const gp=DB.get('gol_partido')||{};
+  const miVoto=((gp[pid]||{}).votos||{})[usuarioActual]||'';
+
+  // Solo se pasa uno de los dos equipos (el que se pulsó)
+  const equipo = local || visitante;
+  const jug = jugadoresDePartido(equipo);
+
+  document.getElementById('bs-titulo').textContent='⚽ Goleador · '+equipo;
+
+  const ZONAS_ORDER=['POR','DEF','MED','DEL'];
+  const ZONAS_LABEL={POR:'🧤 Porteros',DEF:'🛡️ Defensas',MED:'⚙️ Centrocampistas',DEL:'⚡ Delanteros'};
+
+  let h='';
+  ZONAS_ORDER.forEach(pos=>{
+    const filt=jug.filter(j=>j.pos===pos);
+    if(!filt.length) return;
+    h+=`<div class="bs-zona-titulo">${ZONAS_LABEL[pos]}</div>`;
+    filt.sort((a,b)=>a.d-b.d).forEach(j=>{
+      h+=`<div class="bs-jugador ${miVoto===j.n?'sel':''}" onclick="seleccionarGoleador('${j.n.replace(/'/g,"\\'")}')">
+        <div class="bs-j-dorsal">${j.d}</div>
+        <div style="flex:1"><div class="bs-j-nombre">${j.n}</div><div class="bs-j-club">${j.club}</div></div>
+      </div>`;
+    });
+  });
+
+  document.getElementById('bs-body').innerHTML=h||'<div style="color:var(--texto2);font-size:0.85rem;padding:1rem 0;">Sin plantilla disponible</div>';
+  document.getElementById('bs-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function cerrarBS(e){
+  if(e.target===document.getElementById('bs-overlay')) cerrarBSBtn();
+}
+function cerrarBSBtn(){
+  document.getElementById('bs-overlay').classList.remove('open');
+  document.body.style.overflow='';
+  bsPartidoActual=null;
+}
+
+function seleccionarGoleador(jugador){
+  if(!bsPartidoActual) return;
+  const gp=DB.get('gol_partido')||{};
+  if(!gp[bsPartidoActual]) gp[bsPartidoActual]={votos:{},goleadorReal:''};
+  gp[bsPartidoActual].votos[usuarioActual]=jugador;
+  DB.set('gol_partido',gp);
+  cerrarBSBtn();
+  mostrarToast('Goleador: '+jugador+' ✓');
+  renderPronosticos();calcularPuntos();renderClasificacion();
+}
+
+// ═══ CAMPEÓN ═══
+function renderCampeon(){
+  const votos=DB.get('campeon_votos')||{};
+  const miVoto=votos[usuarioActual];
+  const ganador=DB.get('campeon_ganador');
+  document.getElementById('campeon-seleccionado').textContent=ganador?'🏆 Campeón: '+ganador:miVoto?'Tu apuesta: '+miVoto:'';
+  document.getElementById('paises-grid').innerHTML=Object.entries(SELECCIONES).map(([p,s])=>`
+    <button class="pais-btn ${miVoto===p?'seleccionado':''}" onclick="votarCampeon('${p}')" ${(miVoto&&!esAdmin)?'disabled':''}>
+      ${s.bandera} ${p}
+    </button>`).join('');
+}
+function votarCampeon(p){
+  const v=DB.get('campeon_votos')||{};v[usuarioActual]=p;DB.set('campeon_votos',v);
+  mostrarToast('Apuesta: '+p);renderCampeon();calcularPuntos();renderClasificacion();
+}
+
+// ═══ RESUMEN ═══
+function renderResumen(){
+  const partidos=DB.get('partidos')||[];
+  const prons=DB.get('pronosticos')||{};
+  const misPron=prons[usuarioActual]||{};
+  const votos=DB.get('campeon_votos')||{};
+  const gvotes=DB.get('goleador_votos')||{};
+  const golPart=DB.get('gol_partido')||{};
+  const usuarios=DB.get('usuarios')||{};
+  const yo=usuarios[usuarioActual]||{puntos:0,aciertos:0,parciales:0};
+  const lista=Object.values(usuarios).sort((a,b)=>b.puntos-a.puntos);
+  const posicion=lista.findIndex(u=>u.nombre===usuarioActual)+1;
+  const total=Object.keys(misPron).length;
+  const miCampeon=votos[usuarioActual];
+  const sel=miCampeon?SELECCIONES[miCampeon]:null;
+  const miGoleador=gvotes[usuarioActual]||'';
+  const greal=DB.get('goleador_real')||'';
+
+  let html=`<div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">${yo.puntos}</div><div class="stat-label">Puntos</div></div>
+    <div class="stat-card"><div class="stat-num">${posicion||'—'}º</div><div class="stat-label">Posición</div></div>
+    <div class="stat-card"><div class="stat-num">${yo.aciertos}</div><div class="stat-label">Exactos</div></div>
+  </div>
+  <div style="background:#fff;border:1.5px solid var(--borde);border-radius:12px;padding:1rem;margin-bottom:1.25rem;">
+    <div style="font-size:0.72rem;font-weight:700;color:var(--texto2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">Tus apuestas especiales</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+      <span style="font-size:0.85rem;font-weight:600;">🏆 Campeón</span>
+      <span style="font-size:0.85rem;color:var(--ib-azul);font-weight:600;">${sel?sel.bandera+' '+miCampeon:'<span style=color:var(--texto2)>Sin apostar</span>'}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:0.85rem;font-weight:600;">👟 Pichichi</span>
+      <span style="font-size:0.85rem;color:var(--ib-azul);font-weight:600;">${miGoleador||'<span style=color:var(--texto2)>Sin apostar</span>'}</span>
+    </div>
+  </div>
+  <div class="goleador-box">
+    <div class="goleador-box-title">👟 Pichichi del torneo <span style="font-size:0.75rem;font-weight:400;color:var(--texto2)">(+5 pts si aciertas)</span></div>
+    ${greal?`<div style="font-size:0.82rem;color:var(--ib-verde-dark);margin-bottom:0.75rem;font-weight:600;">🏅 Ganador real: ${greal}</div>`:''}
+    ${miGoleador?`
+      <div style="display:flex;align-items:center;justify-content:space-between;background:var(--ib-azul-light);border:1.5px solid #C8DCEE;border-radius:8px;padding:0.625rem 0.875rem;margin-bottom:0.625rem;">
+        <div>
+          <div style="font-size:0.72rem;font-weight:700;color:var(--ib-azul-mid);text-transform:uppercase;letter-spacing:0.05em;">Tu apuesta</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--ib-azul);">${miGoleador}</div>
+        </div>
+        ${esAdmin?`<button class="btn-elegir-goleador" onclick="abrirBSPichichi()" style="flex-shrink:0;">✏️ Cambiar</button>`:''}
+      </div>
+    `:`
+      <button class="btn-primary" onclick="abrirBSPichichi()" style="margin-bottom:0.5rem;">
+        🌍 Elegir jugador por selección
+      </button>
+      <div style="font-size:0.7rem;color:var(--texto2);">Navega por las selecciones y elige al máximo goleador del torneo</div>
+    `}
+  </div>
+  <div class="seccion-titulo" style="font-size:1.2rem;margin-bottom:0.75rem;">Historial (${total})</div>`;
+
+  if(!total) html+='<div class="empty-state"><span class="empty-icon">📋</span>Sin pronósticos aún</div>';
+  else{
+    partidos.forEach(p=>{
+      const pron=misPron[p.id];if(!pron) return;
+      const gd=golPart[p.id]||{};const miGolP=(gd.votos||{})[usuarioActual]||'';
+      let estClass='est-pendiente',estTxt='Pendiente',ptsTxt='';
+      if(p.resultado){
+        const[rL,rV]=p.resultado,[pL,pV]=pron;
+        if(pL===rL&&pV===rV){estClass='est-exacto';estTxt='Exacto';ptsTxt='+3';}
+        else{const gR=rL>rV?'L':rL<rV?'V':'X',gP=pL>pV?'L':pL<pV?'V':'X';
+          if(gR===gP){estClass='est-parcial';estTxt='Ganador';ptsTxt='+1';}
+          else{estClass='est-fallo';estTxt='Fallo';ptsTxt='+0';}}
+      }
+      html+=`<div class="resumen-partido">
+        <div class="resumen-partido-info">
+          <div class="resumen-equipos">${p.local} — ${p.visitante}</div>
+          <div class="resumen-sub">${p.grupo}${miGolP?' · ⚽ '+miGolP:''}</div>
+        </div>
+        <div class="resumen-pron">${pron[0]}-${pron[1]}</div>
+        <div class="resumen-estado ${estClass}">${estTxt}${ptsTxt?' ('+ptsTxt+')':''}</div>
+      </div>`;
+    });
+  }
+  document.getElementById('resumen-contenido').innerHTML=html;
+}
+// ─── BOTTOM SHEET PICHICHI ───
+function abrirBSPichichi(paisSeleccionado=null) {
+  const gvotes=DB.get('goleador_votos')||{};
+  const miVoto=gvotes[usuarioActual]||'';
+
+  if(!paisSeleccionado) {
+    // Nivel 1: lista de selecciones
+    document.getElementById('bs-titulo').textContent='👟 Elegir pichichi del torneo';
+    const porGrupo={};
+    Object.entries(SELECCIONES).forEach(([nombre,sel])=>{
+      if(!sel.jugadores||!sel.jugadores.length) return;
+      if(!porGrupo[sel.grupo]) porGrupo[sel.grupo]=[];
+      porGrupo[sel.grupo].push([nombre,sel]);
+    });
+    let h='<div style="font-size:0.8rem;color:var(--texto2);margin-bottom:0.75rem;">Elige la selección del jugador que apostaste</div>';
+    Object.entries(porGrupo).sort().forEach(([grupo,sels])=>{
+      h+=`<div style="font-size:0.68rem;font-weight:700;color:var(--texto2);letter-spacing:0.1em;text-transform:uppercase;margin:0.875rem 0 0.4rem;">${grupo}</div>`;
+      sels.forEach(([nombre,sel])=>{
+        const esDeEsta=sel.jugadores.some(j=>j.n===miVoto);
+        h+=`<div class="bs-jugador ${esDeEsta?'sel':''}" onclick="abrirBSPichichi('${nombre.replace(/'/g,"\\'")}')">
+          ${flagImg(nombre,'bandera-img')}
+          <div style="flex:1"><div class="bs-j-nombre">${nombre}</div><div class="bs-j-club">${sel.jugadores.length} jugadores${esDeEsta?' · ✓ Tu apuesta actual':''}</div></div>
+          <span style="color:var(--texto2);font-size:1rem;">›</span>
+        </div>`;
+      });
+    });
+    document.getElementById('bs-body').innerHTML=h;
+  } else {
+    // Nivel 2: jugadores de esa selección
+    const sel=SELECCIONES[paisSeleccionado];
+    document.getElementById('bs-titulo').innerHTML=`<button onclick="abrirBSPichichi()" style="background:none;border:none;color:var(--ib-azul-mid);font-size:0.85rem;font-weight:600;cursor:pointer;margin-right:0.5rem;">← Volver</button>${flagImg(paisSeleccionado,'bandera-img')} ${paisSeleccionado}`;
+    const ZONAS_ORDER=['POR','DEF','MED','DEL'];
+    const ZONAS_LABEL={POR:'🧤 Porteros',DEF:'🛡️ Defensas',MED:'⚙️ Centrocampistas',DEL:'⚡ Delanteros'};
+    let h='';
+    ZONAS_ORDER.forEach(pos=>{
+      const filt=sel.jugadores.filter(j=>j.pos===pos);
+      if(!filt.length) return;
+      h+=`<div class="bs-zona-titulo">${ZONAS_LABEL[pos]}</div>`;
+      filt.sort((a,b)=>a.d-b.d).forEach(j=>{
+        h+=`<div class="bs-jugador ${miVoto===j.n?'sel':''}" onclick="seleccionarPichichi('${j.n.replace(/'/g,"\\'")}')">
+          <div class="bs-j-dorsal">${j.d}</div>
+          <div style="flex:1"><div class="bs-j-nombre">${j.n}</div><div class="bs-j-club">${j.club}</div></div>
+        </div>`;
+      });
+    });
+    document.getElementById('bs-body').innerHTML=h;
+  }
+
+  document.getElementById('bs-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function seleccionarPichichi(jugador) {
+  const gv=DB.get('goleador_votos')||{};
+  gv[usuarioActual]=jugador;
+  DB.set('goleador_votos',gv);
+  cerrarBSBtn();
+  mostrarToast('Pichichi: '+jugador+' ✓');
+  renderResumen();
+  calcularPuntos();
+  renderClasificacion();
+}
+
+window.abrirBSPichichi = abrirBSPichichi;
+window.seleccionarPichichi = seleccionarPichichi;
+
+function guardarGoleador(){
+  const v=document.getElementById('input-goleador')?document.getElementById('input-goleador').value.trim():'';
+  if(!v) return;
+  const gv=DB.get('goleador_votos')||{};gv[usuarioActual]=v;DB.set('goleador_votos',gv);
+  mostrarToast('Pichichi: '+v);renderResumen();calcularPuntos();renderClasificacion();
+}
+
+// ═══ SELECCIONES ═══
+function renderSelecciones(){
+  const cont=document.getElementById('selecciones-contenido');
+  if(seleccionVista){
+    const sel=SELECCIONES[seleccionVista];
+    if(!sel||!sel.jugadores||!sel.jugadores.length){seleccionVista=null;renderSelecciones();return;}
+    const porZona={POR:[],DEF:[],MED:[],DEL:[]};
+    sel.jugadores.forEach(j=>{if(porZona[j.pos]) porZona[j.pos].push(j);});
+    const gvotes=DB.get('goleador_votos')||{};
+    const miGol=gvotes[usuarioActual]||'';
+    const greal=DB.get('goleador_real')||'';
+
+    let html=`<button class="btn-volver" onclick="seleccionVista=null;renderSelecciones()">← Volver</button>
+      <div class="seleccion-header">
+        ${flagImg(seleccionVista,'seleccion-flag-big')}
+        <div><div class="seleccion-info-nombre">${seleccionVista}</div><div class="seleccion-info-grupo">${sel.grupo} · ${sel.jugadores.length} jugadores</div></div>
+      </div>`;
+
+    // Zonas
+    Object.entries(ZONAS).forEach(([pos,zona])=>{
+      if(!porZona[pos].length) return;
+      html+=`<div class="zona-titulo">${zona.icono} ${zona.label}</div>`;
+      porZona[pos].sort((a,b)=>a.d-b.d).forEach(j=>{
+        html+=`<div class="jugador-fila"><div class="jugador-dorsal">${j.d}</div><div style="flex:1"><div class="jugador-nombre">${j.n}</div><div class="jugador-club">${j.club}</div></div><div class="jugador-edad">${j.edad} años</div></div>`;
+      });
+    });
+
+    // Sección goleador del torneo por selección
+    html+=`<div style="margin-top:1.5rem;background:linear-gradient(135deg,var(--ib-azul-light),#fff);border:1.5px solid #C8DCEE;border-radius:14px;padding:1.25rem;">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+        <span style="font-size:1.3rem;">👟</span>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.5px;color:var(--ib-azul);">¿Quién será el pichichi de ${seleccionVista}?</div>
+          <div style="font-size:0.72rem;color:var(--texto2);margin-top:2px;">Elige el máximo goleador de esta selección · <strong>+5 pts</strong> si aciertas el pichichi del torneo</div>
+        </div>
+      </div>
+      ${greal?`<div style="font-size:0.82rem;color:var(--ib-verde-dark);font-weight:600;margin-bottom:0.75rem;">🏅 Pichichi real del torneo: ${greal}</div>`:''}
+      ${miGol?`<div style="font-size:0.82rem;margin-bottom:0.75rem;padding:0.5rem 0.75rem;background:#fff;border:1.5px solid var(--borde);border-radius:8px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="color:var(--texto2);font-size:0.75rem;font-weight:600;">Tu apuesta actual</span>
+        <span style="color:var(--ib-azul);font-weight:700;">${miGol}</span>
+      </div>`:''}
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.375rem;">
+        ${sel.jugadores.map(j=>`
+          <button onclick="votarGoleadorDeSeleccion('${j.n.replace(/'/g,"\\'")}')"
+            style="padding:0.5rem 0.625rem;text-align:left;background:${miGol===j.n?'var(--ib-azul)':'#fff'};border:1.5px solid ${miGol===j.n?'var(--ib-azul)':'var(--borde)'};border-radius:8px;cursor:pointer;transition:all 0.15s;${miGol===j.n?'':''}">
+            <div style="font-size:0.78rem;font-weight:600;color:${miGol===j.n?'#fff':'var(--texto)'};">${j.n}</div>
+            <div style="font-size:0.65rem;color:${miGol===j.n?'rgba(255,255,255,0.7)':'var(--texto2)'};">${j.pos==='POR'?'🧤':j.pos==='DEF'?'🛡️':j.pos==='MED'?'⚙️':'⚡'} ${j.club}</div>
+          </button>`).join('')}
+      </div>
+    </div>`;
+
+    cont.innerHTML=html;
+  } else {
+    // Grid de selecciones agrupadas por grupo
+    const porGrupo={};
+    Object.entries(SELECCIONES).forEach(([nombre,sel])=>{
+      if(!sel.jugadores||!sel.jugadores.length) return; // ocultar alias vacíos
+      if(!porGrupo[sel.grupo]) porGrupo[sel.grupo]=[];
+      porGrupo[sel.grupo].push([nombre,sel]);
+    });
+
+    let html=`<div class="seccion-titulo">Selecciones</div>
+      <div style="font-size:0.82rem;color:var(--texto2);margin-bottom:1.25rem;">Pincha en una selección para ver su plantilla completa y apostar al goleador.</div>`;
+
+    Object.entries(porGrupo).sort().forEach(([grupo,sels])=>{
+      html+=`<div class="jornada-label">${grupo}</div><div class="selecciones-grid">`;
+      sels.forEach(([nombre,sel])=>{
+        const gvotes=DB.get('goleador_votos')||{};
+        const esDeEsta=sel.jugadores.some(j=>j.n===(gvotes[usuarioActual]||''));
+        html+=`<div class="seleccion-btn" onclick="seleccionVista='${nombre}';renderSelecciones()" style="${esDeEsta?'border-color:var(--ib-verde);':'' }">
+          ${flagImg(nombre)}
+          <div>
+            <div class="seleccion-nombre">${nombre}</div>
+            <div class="seleccion-grupo">${sel.jugadores.length} jugadores${esDeEsta?` · <span style="color:var(--ib-verde-dark)">✓ Apostado</span>`:''}</div>
+          </div>
+        </div>`;
+      });
+      html+='</div>';
+    });
+
+    cont.innerHTML=html;
+  }
+}
+
+function votarGoleadorDeSeleccion(jugador){
+  const gv=DB.get('goleador_votos')||{};
+  gv[usuarioActual]=jugador;
+  DB.set('goleador_votos',gv);
+  mostrarToast('Pichichi apostado: '+jugador+' ✓');
+  renderSelecciones();
+  calcularPuntos();
+  renderClasificacion();
+}
+
+// ═══ INSTRUCCIONES ═══
+function renderInstrucciones(){
+  document.getElementById('instrucciones-contenido').innerHTML=`
+    <div class="regla-card"><div class="regla-header"><div class="regla-icon">⚽</div><div class="regla-titulo">Pronósticos de partidos</div></div>
+    <div class="regla-desc">Antes del inicio de cada partido introduce el resultado que crees que tendrá al final (incluida prórroga si la hay). Al pitido inicial el sistema bloquea automáticamente tu apuesta.</div>
+    <table class="puntos-tabla"><tr><th>Resultado</th><th>Puntos</th></tr>
+    <tr><td>Marcador exacto (predices 2-1 y sale 2-1)</td><td><span class="pts-badge pts-3">+3 pts</span></td></tr>
+    <tr><td>Ganador o empate correcto</td><td><span class="pts-badge pts-1">+1 pt</span></td></tr>
+    <tr><td>Resultado incorrecto</td><td><span class="pts-badge pts-0">0 pts</span></td></tr></table></div>
+    <div class="regla-card"><div class="regla-header"><div class="regla-icon">🎯</div><div class="regla-titulo">Goleador por partido</div></div>
+    <div class="regla-desc">En cada partido, además del marcador, puedes elegir el jugador que crees que marcará al menos un gol. Dentro de la tarjeta del partido verás los chips con los jugadores de ambos equipos. Pulsa sobre uno para apostar.</div>
+    <table class="puntos-tabla"><tr><th>Resultado</th><th>Puntos</th></tr>
+    <tr><td>Aciertas el jugador goleador</td><td><span class="pts-badge pts-1">+1 pt</span></td></tr>
+    <tr><td>No acierta o no marca nadie</td><td><span class="pts-badge pts-0">0 pts</span></td></tr></table></div>
+    <div class="regla-card"><div class="regla-header"><div class="regla-icon">🏆</div><div class="regla-titulo">Campeón del mundo</div></div>
+    <div class="regla-desc">Elige la selección que crees que ganará el Mundial 2026. Apuesta irrevocable desde que la confirmas.</div>
+    <table class="puntos-tabla"><tr><th>Resultado</th><th>Puntos</th></tr>
+    <tr><td>Aciertas el campeón</td><td><span class="pts-badge pts-10">+10 pts</span></td></tr></table></div>
+    <div class="regla-card"><div class="regla-header"><div class="regla-icon">👟</div><div class="regla-titulo">Pichichi del torneo</div></div>
+    <div class="regla-desc">En "Mi resumen" puedes escribir el nombre del jugador que crees que marcará más goles en todo el torneo.</div>
+    <table class="puntos-tabla"><tr><th>Resultado</th><th>Puntos</th></tr>
+    <tr><td>Aciertas el pichichi</td><td><span class="pts-badge pts-5">+5 pts</span></td></tr></table></div>
+    <div class="regla-card"><div class="regla-header"><div class="regla-icon">📊</div><div class="regla-titulo">Puntuación máxima posible</div></div>
+    <div class="regla-desc">72 partidos de grupos × 3 pts = 216 pts + goleadores × 72 = 72 pts + 10 pts campeón + 5 pts pichichi = <strong>303 puntos máximos</strong> teóricos. ¡Que gane el mejor análisis futbolero!</div></div>`;
+}
+
+// ═══ ADMIN ═══
+function renderAdmin(){
+  const partidos=DB.get('partidos')||[];
+  const golPart=DB.get('gol_partido')||{};
+  const permitidos=DB.get('participantes_permitidos')||{};
+  const listaPermitidos=Object.keys(permitidos).sort();
+  let html='';
+
+  // ── LISTA BLANCA DE PARTICIPANTES ──
+  html+=`<div class="seccion-titulo" style="font-size:1.2rem;margin-bottom:0.75rem;">🔐 Participantes permitidos</div>
+    <div class="admin-card" style="margin-bottom:0.5rem;">
+      <div style="font-size:0.75rem;color:var(--texto2);margin-bottom:0.875rem;line-height:1.5;">
+        ${listaPermitidos.length===0
+          ? '⚠️ Lista vacía — ahora mismo <strong>cualquiera</strong> puede entrar con el código. Añade nombres para restringir el acceso.'
+          : `✓ Solo pueden entrar los <strong>${listaPermitidos.length} nombres</strong> de esta lista.`}
+      </div>
+      <div class="goleador-input-row" style="margin-bottom:0.875rem;">
+        <input type="text" id="input-nuevo-participante" placeholder="Nombre completo exacto..." maxlength="40"
+          style="flex:1;padding:0.7rem 0.875rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:8px;color:var(--texto);font-family:Inter,sans-serif;font-size:0.9rem;outline:none;">
+        <button class="btn-goleador" onclick="addParticipante()">+ Añadir</button>
+      </div>
+      ${listaPermitidos.length===0
+        ? '<div style="font-size:0.82rem;color:var(--texto2);text-align:center;padding:0.5rem;">Sin participantes añadidos aún</div>'
+        : listaPermitidos.map(n=>`
+          <div style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--borde);">
+            <div class="avatar" style="width:26px;height:26px;font-size:0.68rem;flex-shrink:0;">${n[0].toUpperCase()}</div>
+            <div style="flex:1;font-size:0.85rem;font-weight:500;">${n}</div>
+            <button onclick="quitarParticipante('${n.replace(/'/g,"\\'")}')"
+              style="padding:3px 10px;background:#FEE2E2;border:1.5px solid #FECACA;border-radius:6px;color:#B91C1C;font-size:0.72rem;font-weight:700;cursor:pointer;">
+              Quitar
+            </button>
+          </div>`).join('')}
+    </div>`;
+
+  // ── USUARIOS REGISTRADOS ──
+  const usuarios=DB.get('usuarios')||{};
+  const listaUsuarios=Object.values(usuarios).sort((a,b)=>b.puntos-a.puntos);
+  html+=`<div class="seccion-titulo" style="font-size:1.2rem;margin-bottom:0.75rem;margin-top:1rem;">👥 Registrados (${listaUsuarios.length})</div>
+    <div class="admin-card" style="margin-bottom:1.5rem;">
+      ${listaUsuarios.length===0?'<div style="font-size:0.85rem;color:var(--texto2);">Nadie ha entrado aún.</div>':
+      listaUsuarios.map(u=>`
+        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--borde);">
+          <div class="avatar" style="width:26px;height:26px;font-size:0.68rem;flex-shrink:0;">${u.nombre[0].toUpperCase()}</div>
+          <div style="flex:1;font-size:0.85rem;font-weight:600;">${u.nombre}</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--ib-azul);margin-right:0.5rem;">${u.puntos} pts</div>
+          <button onclick="eliminarUsuario('${u.nombre.replace(/'/g,"\\'")}')"
+            style="padding:3px 10px;background:#FEE2E2;border:1.5px solid #FECACA;border-radius:6px;color:#B91C1C;font-size:0.72rem;font-weight:700;cursor:pointer;">
+            Eliminar
+          </button>
+        </div>`).join('')}
+    </div>`;
+
+  // ── PARTIDOS ──
+  html+=`<div class="seccion-titulo" style="font-size:1.2rem;margin-bottom:0.75rem;">⚽ Resultados</div>`;
+  html+=`<div style="margin-bottom:1rem"><input type="text" id="admin-buscar" oninput="filtrarAdmin()" placeholder="Buscar partido..." style="width:100%;padding:0.7rem;background:var(--fondo);border:1.5px solid var(--borde);border-radius:10px;font-family:Inter,sans-serif;font-size:0.9rem;outline:none;color:var(--texto)"></div>`;
+  html+=`<div id="admin-lista">`;
+  partidos.forEach(p=>{
+    const r=p.resultado;
+    const gd=golPart[p.id]||{};
+    const todosJug=[...jugadoresDePartido(p.local),...jugadoresDePartido(p.visitante)];
+    const gChips=todosJug.map(j=>`<button class="jugador-chip ${gd.goleadorReal===j.n?'sel':''}" onclick="setGolPartidoReal('${p.id}','${j.n.replace(/'/g,"\\'")}')">${j.n}</button>`).join('');
+    html+=`<div class="admin-card" data-buscar="${p.local} ${p.visitante} ${p.grupo}">
+      <div class="admin-equipos">${p.local} vs ${p.visitante} <span style="color:var(--texto2);font-size:0.75rem;font-weight:400">(${p.grupo} · ${p.fecha.split('-').reverse().join('/')})</span></div>
+      <div class="resultado-admin-row">
+        <input type="number" min="0" max="20" id="admin_${p.id}_L" value="${r?r[0]:''}" placeholder="0">
+        <span style="font-family:'Bebas Neue';font-size:1.1rem;color:var(--texto2)">:</span>
+        <input type="number" min="0" max="20" id="admin_${p.id}_V" value="${r?r[1]:''}" placeholder="0">
+        <button class="btn-admin" onclick="guardarResultado('${p.id}')">${r?'✓ OK':'Guardar'}</button>
+      </div>
+      ${todosJug.length?`<div style="margin-top:0.625rem"><div style="font-size:0.68rem;font-weight:700;color:var(--texto2);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.375rem;">⚽ Goleador real del partido</div><div class="goleador-alineacion">${gChips}</div>${gd.goleadorReal?`<div style="font-size:0.72rem;color:var(--ib-verde-dark);margin-top:0.3rem;font-weight:600;">✓ ${gd.goleadorReal}</div>`:''}</div>`:''}
+    </div>`;
+  });
+  html+='</div>';
+
+  const cf=DB.get('campeon_ganador');
+  const gReal=DB.get('goleador_real')||'';
+  html+=`<div style="margin-top:1.5rem" class="seccion-titulo" style="font-size:1.2rem;">🌟 Apuestas globales</div>
+    <div class="admin-card"><div class="admin-equipos" style="margin-bottom:0.75rem">🏆 Campeón del torneo (+10 pts)</div>
+    <div class="paises-grid">${Object.entries(SELECCIONES).filter(([,s])=>s.jugadores&&s.jugadores.length).map(([p,s])=>`<button class="pais-btn ${cf===p?'seleccionado':''}" onclick="setGanador('${p}')">${s.bandera} ${p}</button>`).join('')}</div></div>
+    <div class="admin-card" style="margin-top:0.5rem"><div class="admin-equipos" style="margin-bottom:0.75rem">👟 Pichichi real (+5 pts)</div>
+    <div class="goleador-input-row"><input type="text" id="input-goleador-admin" value="${gReal}" placeholder="Nombre del jugador..." maxlength="40"><button class="btn-goleador" onclick="setGoleadorReal()">Confirmar</button></div></div>`;
+
+  document.getElementById('admin-partidos').innerHTML=html;
+}
+
+function addParticipante(){
+  const input=document.getElementById('input-nuevo-participante');
+  const nombre=input.value.trim();
+  if(!nombre) return;
+  const lista=DB.get('participantes_permitidos')||{};
+  lista[nombre]=true;
+  DB.set('participantes_permitidos',lista);
+  input.value='';
+  mostrarToast('✓ '+nombre+' añadido');
+  renderAdmin();
+}
+
+function quitarParticipante(nombre){
+  if(!confirm('¿Quitar a '+nombre+' de la lista? Ya no podrá entrar.')) return;
+  const lista=DB.get('participantes_permitidos')||{};
+  delete lista[nombre];
+  DB.set('participantes_permitidos',lista);
+  mostrarToast(nombre+' eliminado de la lista');
+  renderAdmin();
+}
+
+window.addParticipante = addParticipante;
+window.quitarParticipante = quitarParticipante;
+
+function eliminarUsuario(nombre){
+  if(!confirm('¿Eliminar a '+nombre+' de la porra? Se borrarán todos sus pronósticos.')) return;
+  const usuarios=DB.get('usuarios')||{};
+  delete usuarios[nombre];
+  DB.set('usuarios',usuarios);
+  const prons=DB.get('pronosticos')||{};
+  delete prons[nombre];
+  DB.set('pronosticos',prons);
+  const votos=DB.get('campeon_votos')||{};
+  delete votos[nombre];
+  DB.set('campeon_votos',votos);
+  const gvotes=DB.get('goleador_votos')||{};
+  delete gvotes[nombre];
+  DB.set('goleador_votos',gvotes);
+  mostrarToast(nombre+' eliminado');
+  renderAll();
+}
+
+window.eliminarUsuario = eliminarUsuario;
+
+function filtrarAdmin(){
+  const q=document.getElementById('admin-buscar').value.toLowerCase();
+  document.querySelectorAll('#admin-lista .admin-card').forEach(el=>{
+    el.style.display=el.dataset.buscar.toLowerCase().includes(q)?'block':'none';
+  });
+}
+
+function setGolPartidoReal(pid,jugador){
+  const gp=DB.get('gol_partido')||{};
+  if(!gp[pid]) gp[pid]={votos:{}};
+  gp[pid].goleadorReal=jugador;DB.set('gol_partido',gp);
+  mostrarToast('Goleador real: '+jugador);renderAdmin();calcularPuntos();renderClasificacion();
+}
+function guardarResultado(pid){
+  const vL=parseInt(document.getElementById('admin_'+pid+'_L').value);
+  const vV=parseInt(document.getElementById('admin_'+pid+'_V').value);
+  if(isNaN(vL)||isNaN(vV)){alert('Introduce ambos valores');return;}
+  const ps=DB.get('partidos')||[];const i=ps.findIndex(p=>p.id===pid);
+  if(i>=0){ps[i].resultado=[vL,vV];DB.set('partidos',ps);}
+  mostrarToast('Resultado guardado');renderAll();
+}
+function setGanador(p){DB.set('campeon_ganador',p);mostrarToast('Campeón: '+p);renderAll();}
+function setGoleadorReal(){
+  const v=document.getElementById('input-goleador-admin').value.trim();if(!v) return;
+  DB.set('goleador_real',v);mostrarToast('Pichichi: '+v);renderAll();
+}
+
+function mostrarToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// ═══ EXPONER FUNCIONES AL SCOPE GLOBAL (necesario con type="module") ═══
+window.entrar = entrar;
+window.mostrarTab = mostrarTab;
+window.guardarPron = guardarPron;
+window.votarCampeon = votarCampeon;
+window.abrirBS = abrirBS;
+window.cerrarBSBtn = cerrarBSBtn;
+window.cerrarBS = cerrarBS;
+window.seleccionarGoleador = seleccionarGoleador;
+window.votarGolPartido = votarGolPartido;
+window.votarGoleadorDeSeleccion = votarGoleadorDeSeleccion;
+window.guardarGoleador = guardarGoleador;
+window.guardarResultado = guardarResultado;
+window.setGanador = setGanador;
+window.setGoleadorReal = setGoleadorReal;
+window.setGolPartidoReal = setGolPartidoReal;
+window.filtrarAdmin = filtrarAdmin;
+
+// ═══ INIT CON FIREBASE ═══
+async function iniciar() {
+  mostrarToast('Conectando...');
+  await loadInitialData();
+
+  // Si no hay partidos aún en Firebase, los inicializamos
+  if (!DB.get('partidos')) DB.set('partidos', PARTIDOS_INICIALES);
+  if (!DB.get('usuarios')) DB.set('usuarios', {});
+  if (!DB.get('pronosticos')) DB.set('pronosticos', {});
+  if (!DB.get('campeon_votos')) DB.set('campeon_votos', {});
+  if (!DB.get('goleador_votos')) DB.set('goleador_votos', {});
+  if (!DB.get('gol_partido')) DB.set('gol_partido', {});
+
+  // Escucha cambios en tiempo real (otros usuarios, admin, etc.)
+  initFirebaseListeners();
+
+  document.getElementById('input-nombre').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('input-codigo').focus(); });
+  document.getElementById('input-codigo').addEventListener('keydown', e => { if(e.key==='Enter') entrar(); });
+  document.addEventListener('keydown', e => {
+    if(e.key==='Enter' && document.getElementById('input-nuevo-participante') === document.activeElement) addParticipante();
+  });
+}
+
+iniciar();
+</script>
+</body>
+</html>
