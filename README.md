@@ -1,1 +1,1 @@
-# porra-mundial-iberpay
+# porra-mundial-2026
